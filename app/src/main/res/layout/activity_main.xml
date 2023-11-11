@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <View
+        android:id="@+id/_bg__mobile_dashboard_ek2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/_bg__mobile_dashboard_ek2_shape"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <RelativeLayout
+        android:id="@+id/frame_34"
+        android:layout_width="match_parent"
+        android:layout_height="70.25dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="15dp"
+        tools:ignore="MissingConstraints">
+
+        <View
+            android:id="@+id/_bg__frame_34_ek1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/_bg__mobile_dashboard_ek2_shape" />
+
+
+
+
+        <RelativeLayout
+            android:id="@+id/search_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="65dp"
+            android:layout_marginTop="22dp">
+
+            <RelativeLayout
+                android:id="@+id/search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp">
+
+                <View
+                    android:id="@+id/_bg__search_ek1"
+                    android:layout_width="240dp"
+                    android:layout_height="34dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/search_box" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/search_ek2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="4dp">
+
+                <ImageView
+                    android:id="@+id/vector_ek7"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="0dp"
+                    android:contentDescription="vector_ek7"
+                    android:src="@drawable/search" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/search_songs__albums__artists"
+                android:layout_width="191dp"
+                android:layout_height="19dp"
+                android:layout_gravity="center_horizontal|center"
+                android:layout_marginLeft="42dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/search_songs__albums__artists_string"
+                android:textColor="@color/search_songs__albums__artists_color"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/group_2049"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="11dp">
+
+
+            <ImageView
+                android:id="@+id/ovatify_logo"
+                android:layout_width="41dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ovatify_logo"></ImageView>
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/profile_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="315dp"
+            android:layout_marginTop="10dp">
+
+
+            <ImageView
+                android:id="@+id/profile_logo"
+                android:layout_width="36dp"
+                android:layout_height="37dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/profile_logo"></ImageView>
+            <TextView android:id="@+id/profile_text"
+                android:layout_gravity="center_horizontal|center"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:textColor="@color/home_ek2_color"
+                android:layout_marginLeft="-2dp"
+                android:layout_marginTop="38dp"
+                android:layout_width="46.2dp"
+                android:layout_height="18.2dp"
+                android:text="@string/profile_string"
+                />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <RelativeLayout android:id="@+id/bottom_navbar"
+        android:layout_marginTop="724dp"
+        android:layout_marginStart="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+        <View   android:id="@+id/_bg__bottom_navbar_ek1"
+            android:background="@drawable/_bg__bottom_navbar_ek1_shape"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="76dp" />
+
+
+
+        <LinearLayout android:id="@+id/frame_2"
+            android:layout_marginTop="11dp"
+            android:layout_marginStart="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <RelativeLayout android:id="@+id/navhome"
+                android:layout_marginTop="0dp"
+                android:layout_marginStart="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+
+
+                <RelativeLayout android:id="@+id/home"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <ImageView android:id="@+id/home_logo"
+                        android:src="@drawable/home_clicked"
+                        android:contentDescription="vector"
+                        android:layout_marginStart="2.5dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_width="29dp"
+                        android:layout_height="32dp" />
+
+
+                </RelativeLayout>
+
+                <TextView android:id="@+id/home_ek2"
+                    android:layout_gravity="center_horizontal|center"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:textColor="@color/home_ek2_color"
+                    android:layout_marginLeft="-1dp"
+                    android:layout_marginTop="39dp"
+                    android:layout_width="40.2dp"
+                    android:layout_height="18.2dp"
+                    android:text="@string/home_ek2_string"
+                    />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout android:id="@+id/navexplore"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="45dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+
+                <View   android:id="@+id/_bg__navexplore_ek1"
+                    android:background="@drawable/_bg__navexplore_ek1_shape"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_width="43dp"
+                    android:layout_height="51dp" />
+
+
+                <RelativeLayout android:id="@+id/compass"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginStart="3.5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <ImageView android:id="@+id/explore_logo"
+                        android:src="@drawable/explore_nonclicked"
+                        android:contentDescription="vector_ek2"
+                        android:layout_marginStart="1dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp" />
+
+
+                </RelativeLayout>
+
+                <TextView android:id="@+id/explore"
+                    android:layout_gravity="center_horizontal|center"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:textColor="@color/home_ek2_color"
+                    android:layout_marginLeft="-2dp"
+                    android:layout_marginTop="36dp"
+                    android:layout_width="49.2dp"
+                    android:layout_height="18.2dp"
+                    android:text="@string/explore_string"
+                    />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout android:id="@+id/navlibrary"
+                android:layout_marginTop="3dp"
+                android:layout_marginStart="45dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+
+                <View   android:id="@+id/_bg__navlibrary_variant3"
+                    android:background="@drawable/_bg__navlibrary_variant3_shape"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_width="40dp"
+                    android:layout_height="51dp" />
+
+
+                <RelativeLayout android:id="@+id/library"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+
+                    <ImageView android:id="@+id/library_logo"
+                        android:src="@drawable/library_nonclicked"
+                        android:contentDescription="vector_ek4"
+                        android:layout_marginStart="2.5dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp" />
+
+
+                </RelativeLayout>
+
+                <TextView android:id="@+id/library_ek2"
+                    android:layout_gravity="center_horizontal|center"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:textColor="@color/home_ek2_color"
+                    android:layout_marginLeft="-2dp"
+                    android:layout_marginTop="36dp"
+                    android:layout_width="46.2dp"
+                    android:layout_height="18.2dp"
+                    android:text="@string/library_ek2_string"
+                    />
+
+            </RelativeLayout>
+            <RelativeLayout android:id="@+id/navdashboard"
+                android:layout_marginTop="3dp"
+                android:layout_marginStart="45dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+
+                <RelativeLayout android:id="@+id/dashboard"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+
+
+                    <ImageView android:id="@+id/dashboard_logo"
+                        android:src="@drawable/dashboard_nonclicked"
+                        android:contentDescription="vector_ek4"
+                        android:layout_marginStart="2.5dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp" />
+
+
+                </RelativeLayout>
+
+                <TextView android:id="@+id/dashboard_text"
+                    android:layout_gravity="center_horizontal|center"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:textColor="@color/home_ek2_color"
+                    android:layout_marginLeft="-2dp"
+                    android:layout_marginTop="36dp"
+                    android:layout_width="60dp"
+                    android:layout_height="18.2dp"
+                    android:text="@string/dashboard_string"
+                    />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="com.sabanci.ovatify.HomeFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navbar"
+        app:layout_constraintTop_toBottomOf="@+id/frame_34"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="1dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,4 +11,18 @@
     <color name="light_grey">#292C36</color>
     <color name="light_blue">#B3BBD8</color>
     <color name="dark_grey">#1D1F26</color>
+	<color name="colorPrimary">#008577</color>
+	<color name="colorPrimaryDark">#00574B</color>
+	<color name="colorAccent">#D81B60</color>
+
+	<color name="_bg__mobile_dashboard_ek2_color">#161010</color>
+	<color name="_bg__bottom_navbar_ek1_color">#000000</color>
+	<color name="rectangle_4_color">#0D0909</color>
+	<color name="home_ek2_color">#FFFFFF</color>
+	<color name="rectangle_1118_color">#DDDDDD</color>
+	<color name="rectangle_2_color">#ffffff</color>
+	<color name="_1_color">#4F4F4F</color>
+	<color name="ellipse_2_color">#58968F</color>
+	<color name="_bg__search_ek1_color">#292929</color>
+	<color name="search_songs__albums__artists_color">#949494</color>
 </resources>
