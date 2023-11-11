@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "513502471410",
+    "project_id": "ovatify-42262",
+    "storage_bucket": "ovatify-42262.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513502471410:android:c6477e9c88581408885c6b",
+        "android_client_info": {
+          "package_name": "com.sabanci.ovatify"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNiwAid29xFx77mXGdJRMx7gfO4mB_R5Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
