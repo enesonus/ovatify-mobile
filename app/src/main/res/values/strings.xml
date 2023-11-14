@@ -1,3 +1,44 @@
 <resources>
     <string name="app_name">Ovatify</string>
+<string name="ek_img_content">ExportKit Image</string>
+	<string name="home_ek2_string">Home</string>
+	<string name="explore_string">Explore</string>
+	<string name="library_ek2_string">Library</string>
+	<string name="profile_string">Profile</string>
+	<string name="dashboard_string">Dashboard</string>
+	<string name="newly_added_string">Newly added</string>
+	<string name="_1989__taylor_s_version__string">1989 (Taylors Version)</string>
+	<string name="album___taylor_swift_string">Album  Taylor Swift</string>
+	<string name="_1989__taylor_s_version__ek1_string">1989 (Taylors Version)</string>
+	<string name="album___taylor_swift_ek1_string">Album  Taylor Swift</string>
+	<string name="recent_ratings_string">Recent Ratings</string>
+	<string name="_1_string">1</string>
+	<string name="_2_string">2</string>
+	<string name="_3_string">3</string>
+	<string name="_4_string">4</string>
+	<string name="_5_string">5</string>
+	<string name="_6_string">6</string>
+	<string name="_7_string">7</string>
+	<string name="_8_string">8</string>
+	<string name="_9_string">9</string>
+	<string name="_0_string">0</string>
+	<string name="_1_ek1_string">1</string>
+	<string name="_2_ek1_string">2</string>
+	<string name="_3_ek1_string">3</string>
+	<string name="_4_ek1_string">4</string>
+	<string name="_5_ek1_string">5</string>
+	<string name="_6_ek1_string">6</string>
+	<string name="_7_ek1_string">7</string>
+	<string name="_8_ek1_string">8</string>
+	<string name="_9_ek1_string">9</string>
+	<string name="music_you_might_like_string">Music you might like</string>
+	<string name="sanctuary_in_dying_light_string">Sanctuary in Dying Light</string>
+	<string name="the_luna_sequence_string">The Luna Sequence</string>
+	<string name="sanctuary_in_dying_light_ek1_string">Sanctuary in Dying Light</string>
+	<string name="the_luna_sequence_ek1_string">The Luna Sequence</string>
+	<string name="welcome__user_string">Welcome, User</string>
+	<string name="search_songs__albums__artists_string">Search songs, albums, artists</string>
+    <string name="home">Home</string>
+	<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
