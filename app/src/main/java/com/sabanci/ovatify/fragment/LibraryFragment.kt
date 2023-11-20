@@ -1,7 +1,9 @@
-package com.sabanci.ovatify
+package com.sabanci.ovatify.fragment
 
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.sabanci.ovatify.R
+import com.sabanci.ovatify.adapter.LibraryAdapter
 
 class LibraryFragment:Fragment(R.layout.library_fragment) {
     private lateinit var adapter: LibraryAdapter

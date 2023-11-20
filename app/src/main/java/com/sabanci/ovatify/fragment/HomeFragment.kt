@@ -1,10 +1,12 @@
-package com.sabanci.ovatify
+package com.sabanci.ovatify.fragment
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.sabanci.ovatify.R
+import com.sabanci.ovatify.adapter.HomeAdapter
 
 class HomeFragment: Fragment(R.layout.home_fragment) {
     private lateinit var adapter: HomeAdapter
@@ -19,7 +21,7 @@ class HomeFragment: Fragment(R.layout.home_fragment) {
         recyclerView=view.findViewById(R.id.recview)
         recyclerView.layoutManager=layoutManager
         recyclerView.setHasFixedSize(true)
-        adapter=HomeAdapter(datalist)
+        adapter= HomeAdapter(datalist)
         recyclerView.adapter=adapter
     }
     private fun datainitialize(){

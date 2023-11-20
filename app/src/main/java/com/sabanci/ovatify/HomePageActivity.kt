@@ -1,13 +1,13 @@
 package com.sabanci.ovatify
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.widget.ImageView
-import android.widget.RelativeLayout
 import androidx.fragment.app.Fragment
 import com.sabanci.ovatify.databinding.ActivityMainBinding
+import com.sabanci.ovatify.fragment.DashboardFragment
+import com.sabanci.ovatify.fragment.ExploreFragment
+import com.sabanci.ovatify.fragment.HomeFragment
+import com.sabanci.ovatify.fragment.LibraryFragment
 
 class HomePageActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding

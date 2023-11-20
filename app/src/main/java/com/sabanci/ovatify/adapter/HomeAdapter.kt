@@ -1,4 +1,4 @@
-package com.sabanci.ovatify
+package com.sabanci.ovatify.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.sabanci.ovatify.R
 
 class HomeAdapter(private val songlist:ArrayList<Any>):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
