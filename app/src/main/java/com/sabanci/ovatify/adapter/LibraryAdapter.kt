@@ -1,4 +1,4 @@
-package com.sabanci.ovatify
+package com.sabanci.ovatify.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
