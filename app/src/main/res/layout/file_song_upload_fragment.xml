@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="300dp"
+    android:layout_height="550dp"
+    android:background="@drawable/upload_bottom"
+    >
+
+    <RelativeLayout
+        android:id="@+id/choose_a_file_button"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/choose_file"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/choose_a_file_text"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal|center"
+            android:gravity="center"
+            android:text="@string/choose_a_file"
+            android:textColor="@color/home_ek2_color"
+            android:textSize="16dp"
+            android:visibility="visible" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="170dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/no_file_chosen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/no_file_chosen"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="@string/no_file_chosen"
+            android:textColor="@color/home_ek2_color"
+            android:layout_gravity="center_horizontal|center"
+            android:gravity="center"
+            android:textSize="16dp"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/upload_button"
+        android:layout_width="220dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="450dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/upload_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal|center"
+            android:gravity="center"
+            android:text="Upload this file to Ovatify! "
+            android:textColor="@color/home_ek2_color"
+            android:textSize="16dp"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

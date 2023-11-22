@@ -39,6 +39,15 @@
 	<string name="welcome__user_string">Welcome, User</string>
 	<string name="search_songs__albums__artists_string">Search songs, albums, artists</string>
     <string name="home">Home</string>
+	<string name="upload">Upload</string>
+	<string name="song_upload">Song</string>
+	<string name="file_upload">File</string>
+	<string name="no_file_chosen">No file chosen</string>
+	<string name="month">Month</string>
+	<string name="artist">Artist</string>
+	<string name="year">Year</string>
+	<string name="album">Album</string>
+	<string name="choose_a_file">Choose a file</string>
 	<!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
