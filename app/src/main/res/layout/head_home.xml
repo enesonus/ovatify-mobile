@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/_bg__mobile_dashboard_ek2_shape" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="36.4dp">
+        <TextView
+            android:id="@+id/welcome__user"
+            android:layout_width="match_parent"
+            android:layout_height="36.4dp"
+            android:layout_gravity="center_horizontal|center"
+            android:gravity="center"
+            android:text="@string/welcome__user_string"
+            android:textColor="@color/home_ek2_color"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/music_you_might_like"
+        android:layout_width="167dp"
+        android:layout_height="23.6dp"
+        android:layout_gravity="center_horizontal|center"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="53dp"
+        android:gravity="center"
+        android:text="@string/music_you_might_like_string"
+        android:textColor="@color/home_ek2_color"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+    <RelativeLayout
+        android:id="@+id/music1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="80dp">
+
+        <ImageView
+            android:id="@+id/music1photo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:contentDescription="unsplash_zcqjx2_z4sm_ek2"
+            android:src="@drawable/unsplash_zcqjx2_z4sm_ek2" />
+
+
+        <RelativeLayout
+            android:id="@+id/music1info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="65dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/music1name"
+                android:layout_width="135.1dp"
+                android:layout_height="16.1dp"
+                android:layout_gravity="center_horizontal|center"
+                android:layout_marginLeft="-2dp"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:text="@string/sanctuary_in_dying_light_string"
+                android:textColor="@color/home_ek2_color"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/music1artist"
+                android:layout_width="109.1dp"
+                android:layout_height="16.1dp"
+                android:layout_gravity="center_horizontal|center"
+                android:layout_marginLeft="-2dp"
+                android:layout_marginTop="17dp"
+                android:gravity="center"
+                android:text="@string/the_luna_sequence_string"
+                android:textColor="@color/home_ek2_color"
+                android:textSize="11sp" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/music2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp">
+
+            <ImageView
+                android:id="@+id/music2photo"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:contentDescription="unsplash_zcqjx2_z4sm_ek2"
+                android:src="@drawable/unsplash_zcqjx2_z4sm_ek2" />
+
+
+            <RelativeLayout
+                android:id="@+id/music2info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="65dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/music2name"
+                    android:layout_width="135.1dp"
+                    android:layout_height="16.1dp"
+                    android:layout_gravity="center_horizontal|center"
+                    android:layout_marginLeft="-2dp"
+                    android:layout_marginTop="0dp"
+                    android:gravity="center"
+                    android:text="@string/sanctuary_in_dying_light_string"
+                    android:textColor="@color/home_ek2_color"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/music2artist"
+                    android:layout_width="109.1dp"
+                    android:layout_height="16.1dp"
+                    android:layout_gravity="center_horizontal|center"
+                    android:layout_marginLeft="-2dp"
+                    android:layout_marginTop="17dp"
+                    android:gravity="center"
+                    android:text="@string/the_luna_sequence_string"
+                    android:textColor="@color/home_ek2_color"
+                    android:textSize="11sp" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/line_area_chart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="220dp">
+
+        <View
+            android:id="@+id/rectangle_1118"
+            android:layout_width="310dp"
+            android:layout_height="173dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/rectangle_1118_shape" />
+        <ImageView
+            android:id="@+id/chartphoto"
+            android:layout_width="280dp"
+            android:layout_height="130dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="35dp"
+            android:src="@drawable/chart"></ImageView>
+
+        <TextView
+            android:id="@+id/recent_ratings"
+            android:layout_width="119.89dp"
+            android:layout_height="19.58dp"
+            android:layout_marginLeft="27.69dp"
+            android:layout_marginTop="12.28dp"
+            android:text="@string/recent_ratings_string"
+            android:textColor="@color/_bg__bottom_navbar_ek1_color"
+            android:textSize="12sp" />
+
+
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/newly_added"
+        android:layout_width="109dp"
+        android:layout_height="23.6dp"
+        android:layout_gravity="center_horizontal|center"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="415dp"
+        android:gravity="center"
+        android:text="@string/newly_added_string"
+        android:textColor="@color/home_ek2_color"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+</RelativeLayout>

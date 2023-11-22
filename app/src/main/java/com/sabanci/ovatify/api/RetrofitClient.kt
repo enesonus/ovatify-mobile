@@ -1,20 +1,41 @@
 package com.sabanci.ovatify.api
 
 import ApiService
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Request
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
-    private const val BASE_URL = "https://ovatify-backend.fly.dev/"
+
+    private const val BASE_URL = "https://ovatify-backend-dev.fly.dev/"
+    private const val AUTH_TOKEN = "e5e28a48-8080-11ee-b962-0242ac120002"
+
+    private val httpClient = OkHttpClient.Builder()
+
+    init {
+        // Add an interceptor to add the Bearer token to the Authorization header
+        val authInterceptor = Interceptor { chain ->
+            val original = chain.request()
+            val requestBuilder: Request.Builder = original.newBuilder()
+                .header("Authorization", "Bearer $AUTH_TOKEN")
+            val request: Request = requestBuilder.build()
+            chain.proceed(request)
+        }
+
+        // Add the interceptor to the OkHttpClient
+        httpClient.addInterceptor(authInterceptor)
+    }
 
     private val retrofit: Retrofit by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
-            .client(OkHttpClient.Builder().build())
+            .client(httpClient.build())
             .build()
     }
+
     val apiService: ApiService by lazy {
         retrofit.create(ApiService::class.java)
     }

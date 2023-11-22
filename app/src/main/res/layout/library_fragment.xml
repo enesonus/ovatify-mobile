@@ -8,4 +8,10 @@
         android:layout_height="match_parent"
         android:background="@drawable/_bg__mobile_dashboard_ek2_shape"
         />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upload" />
 </RelativeLayout>

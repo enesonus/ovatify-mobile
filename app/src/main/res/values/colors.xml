@@ -14,7 +14,7 @@
 	<color name="colorPrimary">#008577</color>
 	<color name="colorPrimaryDark">#00574B</color>
 	<color name="colorAccent">#D81B60</color>
-
+	<color name="line">#B3BBD8</color>
 	<color name="_bg__mobile_dashboard_ek2_color">#161010</color>
 	<color name="_bg__bottom_navbar_ek1_color">#000000</color>
 	<color name="rectangle_4_color">#0D0909</color>
