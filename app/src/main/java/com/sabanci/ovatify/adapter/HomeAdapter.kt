@@ -7,8 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sabanci.ovatify.R
+import com.sabanci.ovatify.data.IhomeclickListener
 
-class HomeAdapter(private val songlist:ArrayList<Any>):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class HomeAdapter(private val songlist:ArrayList<Any>,private val listener:IhomeclickListener):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     class FirstViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){
         val welcome_user=itemView.findViewById<TextView>(R.id.welcome__user)
@@ -49,9 +50,13 @@ class HomeAdapter(private val songlist:ArrayList<Any>):RecyclerView.Adapter<Recy
                 //will implement when backend data comes
             }
             is OtherViewHolder -> {
+
                 // Bind data for other items
                 // For instance: holder.bind(dataList[position])
                 //will implement when backend data comes
+                holder.itemView.setOnClickListener {
+                    listener.onItemClick(position)
+                }
             }
         }
     }
