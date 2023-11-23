@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/_bg__mobile_dashboard_ek2_color"
+    >
+
+
+    <RelativeLayout
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="70.25dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp"
+        android:layout_alignParentTop="true"
+        android:clipToOutline="true"
+        android:background="#0D0909"
+        tools:ignore="MissingConstraints"
+        >
+
+        <TextView
+            android:id="@+id/Music_info"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal|center"
+            android:gravity="center"
+            android:text="Music Info"
+            android:textColor="@color/home_ek2_color"
+            android:textSize="24dp" />
+
+        <RelativeLayout
+            android:id="@+id/group_2049"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="11dp">
+
+
+            <ImageView
+                android:id="@+id/back_button"
+                android:layout_width="20dp"
+                android:layout_height="45dp"
+                android:src="@drawable/icon"></ImageView>
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/Edit_button"
+        android:layout_width="90dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/Edit_text"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="30dp"
+            android:text="Edit"
+            android:textColor="@color/home_ek2_color"
+            android:textSize="20sp"
+            ></TextView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/music2"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="90dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/music2photo"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="0dp"
+            android:contentDescription="unsplash_zcqjx2_z4sm_ek2"
+            android:src="@drawable/unsplash_zcqjx2_z4sm_ek2" />
+
+        <TextView
+            android:id="@+id/musicname"
+            android:layout_width="270.1dp"
+            android:layout_height="45.1dp"
+            android:layout_gravity="center_horizontal|center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="220dp"
+            android:text="Sanctuary In Dying Light"
+            android:textColor="@color/home_ek2_color"
+            android:backgroundTint="@android:color/transparent"
+            android:textSize="19sp" />
+
+        <RelativeLayout
+            android:id="@+id/music2info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="230dp"
+            android:layout_marginStart="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/musicartist"
+                android:layout_width="250.1dp"
+                android:layout_height="40.1dp"
+                android:layout_gravity="center_horizontal|center"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="30dp"
+                android:text="Artist: The Luna Sequence"
+                android:textColor="@color/home_ek2_color"
+                android:backgroundTint="@android:color/transparent"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/musicalbum"
+                android:layout_width="250.1dp"
+                android:layout_height="40.1dp"
+                android:layout_gravity="center_horizontal|center"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="70dp"
+                android:text="Album:"
+                android:textColor="@color/home_ek2_color"
+                android:backgroundTint="@android:color/transparent"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/musicyear"
+                android:layout_width="250.1dp"
+                android:layout_height="40.1dp"
+                android:layout_gravity="center_horizontal|center"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="110dp"
+                android:text="Year: 2005"
+                android:textColor="@color/home_ek2_color"
+                android:backgroundTint="@android:color/transparent"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/musicgenres"
+                android:layout_width="250.1dp"
+                android:layout_height="40.1dp"
+                android:layout_gravity="center_horizontal|center"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="150dp"
+                android:text="Genres: Pop, Rock"
+                android:textColor="@color/home_ek2_color"
+                android:backgroundTint="@android:color/transparent"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/musicInstruments"
+                android:layout_width="250.1dp"
+                android:layout_height="40.1dp"
+                android:layout_gravity="center_horizontal|center"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="190dp"
+                android:text="Instruments: Guitar"
+                android:textColor="@color/home_ek2_color"
+                android:backgroundTint="@android:color/transparent"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/musicMood"
+                android:layout_width="250.1dp"
+                android:layout_height="40.1dp"
+                android:layout_gravity="center_horizontal|center"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="230dp"
+                android:text="Mood: Chill"
+                android:textColor="@color/home_ek2_color"
+                android:backgroundTint="@android:color/transparent"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="86dp"
+        android:stepSize="1.0"
+        android:isIndicator="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/music2" />
+
+    <RelativeLayout
+        android:id="@+id/Cancel_button"
+        android:background="@drawable/save_cancel_bckgrnd"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="270dp"
+        android:layout_marginEnd="86dp"
+        android:layout_marginBottom="39dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/Cancel_icon"
+            android:layout_width="55dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/cancel"></ImageView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:background="@drawable/save_cancel_bckgrnd"
+        android:id="@+id/Save_button"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="85dp"
+        android:layout_marginBottom="45dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/Save_icon"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="9dp"
+            android:src="@drawable/save"></ImageView>
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

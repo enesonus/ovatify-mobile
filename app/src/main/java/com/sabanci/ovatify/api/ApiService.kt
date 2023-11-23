@@ -28,12 +28,12 @@ interface ApiService {
     fun uploadFile(
         @Part file: MultipartBody.Part
     ): Call<Void>
-    @GET("songs/api/search")
+    @GET("songs/search-spotify/")
     fun searchForSong(
         @Query("search_string") searchString: String
     ): Call<SpotifySearchReturn>
 
-    @POST("songs/api/add/")
+    @POST("songs/add-song/")
     fun sendSong(@Body idandRate:IdAndRate
     ): Call<Void>
 }

@@ -28,6 +28,7 @@
         <activity android:name=".SignInActivity"></activity>
         <activity android:name=".HomePageActivity"></activity>
         <activity android:name=".UploadActivity"></activity>
+        <activity android:name=".ShowMusicActivity"></activity>
     </application>
 
 </manifest>
