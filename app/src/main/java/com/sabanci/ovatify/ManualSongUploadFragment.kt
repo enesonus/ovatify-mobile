@@ -148,15 +148,18 @@ class ManualSongUploadFragment: Fragment() {
                 Log.e("response","response comes")
                 if (response.isSuccessful) {
                     Log.e("request  ","response is successfull")
+
                     val spotifySearchReturn: SpotifySearchReturn? = response.body()
                     if (spotifySearchReturn != null) {
                         songList= spotifySearchReturn.results
+                        Log.d("song details", songList[0].songImage.toString())
                     }
                     if (songList!=null&&songList.isNotEmpty()) {
                         if (songList[0] != null) {
                             binding.spotify1name.text = songList[0].track_name
                             binding.spotify1artist.text=(songList[0].artist)
                             binding.spotify1album.text=songList[0].album_name+" "+songList[0].release_year
+                            //binding.spotify1photo.setImageResource(songList[0].songImage)
                             binding.spotify1.visibility=View.VISIBLE
                         }
                         else { binding.spotify1.visibility=View.INVISIBLE}

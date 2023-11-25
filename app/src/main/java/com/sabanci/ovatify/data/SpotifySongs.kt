@@ -5,5 +5,6 @@ data class SpotifySongs(
     val album_name: String,
     val artist: String,
     val release_year: String,
-    val spotify_id: String
+    val spotify_id: String,
+    val songImage: Int
 )
