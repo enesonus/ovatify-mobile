@@ -84,7 +84,8 @@ class SignUpActivity : AppCompatActivity() {
 
                                     val user = FirebaseAuth.getInstance().currentUser
                                     val email = user?.email
-                                    val userToken = user?.getIdToken(false)?.result?.token
+                                    var userToken = user?.getIdToken(false)?.result?.token
+                                    userToken = "Bearer $userToken"
                                     Log.d("The Token", "Firebase Authentication Token: $userToken , The Email: $email")
                                     //val request = CreateUserRequest(userEmail, userToken)
 

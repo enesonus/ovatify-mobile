@@ -7,40 +7,37 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sabanci.ovatify.R
 import com.sabanci.ovatify.adapter.HomeAdapter
-import com.sabanci.ovatify.adapter.LibraryAdapter2
-import com.sabanci.ovatify.databinding.MusicListBinding
-import com.sabanci.ovatify.databinding.MusicParentItemBinding
-import com.sabanci.ovatify.utils.SampleData
+import com.sabanci.ovatify.databinding.ActivityMainBinding
+import com.sabanci.ovatify.databinding.HomeFragment2Binding
 
-class ExploreFragment:Fragment(R.layout.explore_fragment) {
-    private lateinit var binding: MusicListBinding
-    private lateinit var adapter: LibraryAdapter2
+class HomeFragment2 : Fragment(R.layout.home_fragment2) {
+
+    private lateinit var adapter: HomeAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var datalist:ArrayList<Any> //data is not initialized yet
-
+    private lateinit var binding: HomeFragment2Binding
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        /*
-        datalist=ArrayList()
-        datainitialize()
+        //datalist=ArrayList()
+        //datainitialize()
         val layoutManager= LinearLayoutManager(context)
-        recyclerView=view.findViewById(R.id.recview)
+        recyclerView=view.findViewById(R.id.mainRecyclerView)
         recyclerView.layoutManager=layoutManager
         recyclerView.setHasFixedSize(true)
-        adapter= HomeAdapter(datalist)
-        recyclerView.adapter=adapter
-         */
 
-        //recyclerView = view.findViewById(R.id.library_recycler_view)
-        //recyclerView.adapter=LibraryAdapter2(SampleData.collections)
+        //adapter= HomeAdapter(datalist)
+        //recyclerView.adapter=adapter
+
 
 
 
     }
+
     private fun datainitialize(){
         //no data is initialized just some space
         for(i in 1..20){
             datalist.add("")
         }
     }
+
 }
