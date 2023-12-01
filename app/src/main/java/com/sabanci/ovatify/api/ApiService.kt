@@ -12,6 +12,7 @@ import retrofit2.http.Header
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 
@@ -36,6 +37,11 @@ interface ApiService {
     @POST("songs/add-song/")
     fun sendSong(@Body idandRate:IdAndRate
     ): Call<Void>
+        @GET("users/get-favorite-{entity}/")
+        fun getEntityCount(
+            @Path("entity") entity: String,
+            @Query("number_of_songs") numberOfSongs: Int = 10
+        ): Call<Map<String, Float>> // Adjust the response type as needed
 }
 
 
