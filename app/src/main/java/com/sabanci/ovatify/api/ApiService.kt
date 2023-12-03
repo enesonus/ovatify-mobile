@@ -1,6 +1,8 @@
 
+import com.sabanci.ovatify.data.FavoriteSongsReturn
 import com.sabanci.ovatify.data.IdAndRate
 import com.sabanci.ovatify.data.RResponse
+import com.sabanci.ovatify.data.RecentlyAddedSongsReturn
 import com.sabanci.ovatify.data.SpotifySearchReturn
 import com.sabanci.ovatify.data.SpotifySongs
 import okhttp3.MultipartBody
@@ -19,7 +21,7 @@ import retrofit2.http.Query
 //data class CreateUserRequest(val token: String, val email: String)
 interface ApiService {
 
-    @POST("/users/create-user/")
+    @POST("users/create-user/")
     fun createUser(
         @Header("Authorization") userToken : String?,
         @Body email: String?
@@ -37,11 +39,24 @@ interface ApiService {
     @POST("songs/add-song/")
     fun sendSong(@Body idandRate:IdAndRate
     ): Call<Void>
-        @GET("users/get-favorite-{entity}/")
-        fun getEntityCount(
-            @Path("entity") entity: String,
-            @Query("number_of_songs") numberOfSongs: Int = 10
-        ): Call<Map<String, Float>> // Adjust the response type as needed
+
+    @GET("users/get-favorite-songs/")
+    fun getFavoriteSongs(
+        @Query("number_of_songs") numberOfSongs: String
+    ) :Call<FavoriteSongsReturn>
+
+
+    @GET("users/get-recently-added-songs/")
+    fun getRecentlyAddedSongs(
+        @Query("number_of_songs") numberOfSongs: String
+    ) :Call<RecentlyAddedSongsReturn>
+
+
+    @GET("users/get-favorite-{entity}/")
+    fun getEntityCount(
+        @Path("entity") entity: String,
+        @Query("number_of_songs") numberOfSongs: Int = 10
+    ): Call<Map<String, Float>> // Adjust the response type as needed
 }
 
 

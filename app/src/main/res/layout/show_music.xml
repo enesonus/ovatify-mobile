@@ -187,26 +187,26 @@
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginStart="85dp"
-        android:layout_marginTop="0dp"
         android:layout_marginEnd="86dp"
-        android:stepSize="1.0"
         android:isIndicator="true"
+        android:stepSize="1.0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/music2" />
 
     <RelativeLayout
         android:id="@+id/Cancel_button"
-        android:background="@drawable/save_cancel_bckgrnd"
         android:layout_width="65dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="270dp"
-        android:layout_marginEnd="86dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginEnd="270dp"
         android:layout_marginBottom="39dp"
+        android:background="@drawable/save_cancel_bckgrnd"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar">
 
         <ImageView
             android:id="@+id/Cancel_icon"
@@ -218,15 +218,18 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:background="@drawable/save_cancel_bckgrnd"
         android:id="@+id/Save_button"
         android:layout_width="65dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="85dp"
+        android:layout_marginStart="276dp"
+        android:layout_marginEnd="86dp"
         android:layout_marginBottom="45dp"
+        android:background="@drawable/save_cancel_bckgrnd"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar">
 
         <ImageView
             android:id="@+id/Save_icon"
@@ -236,6 +239,18 @@
             android:src="@drawable/save"></ImageView>
 
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/removeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/save_cancel_bckgrnd"
+        android:text="Remove"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/Save_button"
+        app:layout_constraintStart_toEndOf="@+id/Cancel_button"
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+        android:textColor="@color/white"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

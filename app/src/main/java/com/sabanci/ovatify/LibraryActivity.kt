@@ -16,9 +16,12 @@ class LibraryActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+        /*
         binding.apply {
             libraryRecyclerView.adapter = LibraryAdapter2(SampleData.collections)
         }
+
+         */
 
 
 

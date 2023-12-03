@@ -41,6 +41,7 @@
     <string name="home">Home</string>
 	<string name="upload">Upload</string>
 	<string name="song_upload">Song</string>
+	<string name="profile_settings">Profile Settings</string>
 	<string name="file_upload">File</string>
 	<string name="no_file_chosen">No file chosen</string>
 	<string name="month">Month</string>

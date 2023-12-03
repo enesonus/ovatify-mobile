@@ -81,7 +81,8 @@
                     android:layout_width="210dp"
                     android:layout_height="16.1dp"
                     android:layout_marginTop="34dp"
-                    android:textSize="12sp">
+                    android:textSize="12sp"
+                    android:textColor="@color/white">
 
                 </TextView>
 
@@ -93,7 +94,8 @@
                     android:layout_marginLeft="1dp"
                     android:layout_marginTop="0dp"
                     android:text="@string/sanctuary_in_dying_light_string"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:textColor="@color/white"/>
 
                 <TextView
                     android:id="@+id/spotify1artist"
@@ -102,7 +104,7 @@
                     android:layout_marginLeft="1dp"
                     android:layout_marginTop="17dp"
                     android:text="@string/the_luna_sequence_string"
-                    android:textColor="@color/home_ek2_color"
+                    android:textColor="@color/white"
                     android:textSize="11sp" />
 
             </RelativeLayout>
@@ -136,7 +138,8 @@
                     android:layout_width="210dp"
                     android:layout_height="16.1dp"
                     android:layout_marginTop="34dp"
-                    android:textSize="12sp">
+                    android:textSize="12sp"
+                    android:textColor="@color/white">
 
                 </TextView>
 
@@ -148,7 +151,8 @@
                     android:layout_marginLeft="1dp"
                     android:layout_marginTop="0dp"
                     android:text="@string/sanctuary_in_dying_light_string"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:textColor="@color/white"/>
 
                 <TextView
                     android:id="@+id/spotify2artist"
@@ -157,7 +161,8 @@
                     android:layout_marginLeft="1dp"
                     android:layout_marginTop="17dp"
                     android:text="@string/the_luna_sequence_string"
-                    android:textSize="11sp" />
+                    android:textSize="11sp"
+                    android:textColor="@color/white"/>
 
             </RelativeLayout>
         </RelativeLayout>
@@ -190,7 +195,8 @@
                     android:layout_width="210dp"
                     android:layout_height="16.1dp"
                     android:layout_marginTop="34dp"
-                    android:textSize="12sp">
+                    android:textSize="12sp"
+                    android:textColor="@color/white">
 
                 </TextView>
 
@@ -202,7 +208,8 @@
                     android:layout_marginLeft="1dp"
                     android:layout_marginTop="0dp"
                     android:text="@string/sanctuary_in_dying_light_string"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:textColor="@color/white"/>
 
                 <TextView
                     android:id="@+id/spotify3artist"
@@ -211,7 +218,8 @@
                     android:layout_marginLeft="1dp"
                     android:layout_marginTop="17dp"
                     android:text="@string/the_luna_sequence_string"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:textColor="@color/white"/>
 
             </RelativeLayout>
         </RelativeLayout>
@@ -244,7 +252,8 @@
                     android:layout_width="210dp"
                     android:layout_height="16.1dp"
                     android:layout_marginTop="34dp"
-                    android:textSize="12sp">
+                    android:textSize="12sp"
+                    android:textColor="@color/white">
 
                 </TextView>
 
@@ -255,7 +264,8 @@
                     android:layout_marginLeft="1dp"
                     android:layout_marginTop="0dp"
                     android:text="@string/sanctuary_in_dying_light_string"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:textColor="@color/white"/>
 
                 <TextView
                     android:id="@+id/spotify4artist"
@@ -264,7 +274,8 @@
                     android:layout_marginLeft="1dp"
                     android:layout_marginTop="17dp"
                     android:text="@string/the_luna_sequence_string"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:textColor="@color/white"/>
 
             </RelativeLayout>
         </RelativeLayout>
@@ -297,7 +308,8 @@
                 android:layout_width="210dp"
                 android:layout_height="16.1dp"
                 android:layout_marginTop="34dp"
-                android:textSize="12sp">
+                android:textSize="12sp"
+                android:textColor="@color/white">
 
             </TextView>
 
@@ -308,7 +320,8 @@
                     android:layout_marginLeft="1dp"
                     android:layout_marginTop="0dp"
                     android:text="@string/sanctuary_in_dying_light_string"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:textColor="@color/white"/>
 
                 <TextView
                     android:id="@+id/spotify5artist"
@@ -317,7 +330,8 @@
                     android:layout_marginLeft="1dp"
                     android:layout_marginTop="17dp"
                     android:text="@string/the_luna_sequence_string"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:textColor="@color/white"/>
 
             </RelativeLayout>
         </RelativeLayout>

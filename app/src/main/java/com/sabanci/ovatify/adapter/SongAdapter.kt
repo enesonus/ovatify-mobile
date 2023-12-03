@@ -9,7 +9,7 @@ import com.sabanci.ovatify.databinding.MusicItemTryBinding
 import com.sabanci.ovatify.model.MusicModel
 import coil.load
 
-class SongAdapter (private val movieModel: List<MusicModel>) : RecyclerView.Adapter<SongAdapter.SongViewHolder>(){
+class SongAdapter (private val musicModelList : List<MusicModel>) : RecyclerView.Adapter<SongAdapter.SongViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.music_item_try,parent,false)
@@ -18,16 +18,15 @@ class SongAdapter (private val movieModel: List<MusicModel>) : RecyclerView.Adap
 
     override fun onBindViewHolder(holder: SongViewHolder, position: Int) {
         holder.binding.apply {
-            imageMusic.load(movieModel[position].imageUrl)
+            imageMusic.load(musicModelList[position].imageUrl)
         }
     }
 
-    override fun getItemCount() =movieModel.size
+    override fun getItemCount() =musicModelList.size
 
 
     inner class SongViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         val binding = MusicItemTryBinding.bind(itemView)
-
     }
 
 }

@@ -2,10 +2,10 @@ package com.sabanci.ovatify
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.sabanci.ovatify.databinding.UploadSongBinding
+import com.sabanci.ovatify.fragment.ManualSongUploadFragment
 
 class UploadActivity:AppCompatActivity() {
     lateinit private var binding: UploadSongBinding

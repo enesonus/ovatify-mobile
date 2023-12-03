@@ -29,6 +29,8 @@
         <activity android:name=".HomePageActivity"></activity>
         <activity android:name=".UploadActivity"></activity>
         <activity android:name=".ShowMusicActivity"></activity>
+        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".VerticalMusicActivity"></activity>
     </application>
 
 </manifest>

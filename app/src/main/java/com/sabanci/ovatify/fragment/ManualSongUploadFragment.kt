@@ -1,6 +1,5 @@
-package com.sabanci.ovatify
+package com.sabanci.ovatify.fragment
 
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -15,16 +14,13 @@ import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
+import coil.load
+import com.sabanci.ovatify.R
 import com.sabanci.ovatify.api.RetrofitClient
 import com.sabanci.ovatify.data.IdAndRate
-import com.sabanci.ovatify.data.RResponse
 import com.sabanci.ovatify.data.SpotifySearchReturn
 import com.sabanci.ovatify.data.SpotifySongs
 import com.sabanci.ovatify.databinding.ManualSongUploadFragmentBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -107,6 +103,7 @@ class ManualSongUploadFragment: Fragment() {
                     override fun onResponse(call: Call<Void>, response: Response<Void>) {
                         if(response.isSuccessful) {
                             Log.e("response", "done")
+                            Toast.makeText(requireContext(), "Song Uploaded Successfully!", Toast.LENGTH_SHORT).show()
                         }
                         else {
                             Log.e("response",response.code().toString())
@@ -125,21 +122,43 @@ class ManualSongUploadFragment: Fragment() {
 
 }
     private fun highlightSelectedRelativeLayout(relativeLayout: RelativeLayout) {
-        binding.spotify1.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.dark_brown))
-        binding.spotify2.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.dark_brown))
-        binding.spotify3.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.dark_brown))
-        binding.spotify4.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.dark_brown))
-        binding.spotify5.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.dark_brown))
-        relativeLayout.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.dark_grey))
+        binding.spotify1.setBackgroundColor(ContextCompat.getColor(requireContext(),
+            R.color.dark_brown
+        ))
+        binding.spotify2.setBackgroundColor(ContextCompat.getColor(requireContext(),
+            R.color.dark_brown
+        ))
+        binding.spotify3.setBackgroundColor(ContextCompat.getColor(requireContext(),
+            R.color.dark_brown
+        ))
+        binding.spotify4.setBackgroundColor(ContextCompat.getColor(requireContext(),
+            R.color.dark_brown
+        ))
+        binding.spotify5.setBackgroundColor(ContextCompat.getColor(requireContext(),
+            R.color.dark_brown
+        ))
+        relativeLayout.setBackgroundColor(ContextCompat.getColor(requireContext(),
+            R.color.dark_grey
+        ))
 
 
     }
     private fun search(text:String){
-        binding.spotify1.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.dark_brown))
-        binding.spotify2.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.dark_brown))
-        binding.spotify3.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.dark_brown))
-        binding.spotify4.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.dark_brown))
-        binding.spotify5.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.dark_brown))
+        binding.spotify1.setBackgroundColor(ContextCompat.getColor(requireContext(),
+            R.color.dark_brown
+        ))
+        binding.spotify2.setBackgroundColor(ContextCompat.getColor(requireContext(),
+            R.color.dark_brown
+        ))
+        binding.spotify3.setBackgroundColor(ContextCompat.getColor(requireContext(),
+            R.color.dark_brown
+        ))
+        binding.spotify4.setBackgroundColor(ContextCompat.getColor(requireContext(),
+            R.color.dark_brown
+        ))
+        binding.spotify5.setBackgroundColor(ContextCompat.getColor(requireContext(),
+            R.color.dark_brown
+        ))
         if(binding.SongEdittext.text.toString().length>2){
         val call = RetrofitClient.apiService.searchForSong(text)
         Log.e("retrofit","retrofit call okay")
@@ -148,15 +167,18 @@ class ManualSongUploadFragment: Fragment() {
                 Log.e("response","response comes")
                 if (response.isSuccessful) {
                     Log.e("request  ","response is successfull")
+
                     val spotifySearchReturn: SpotifySearchReturn? = response.body()
                     if (spotifySearchReturn != null) {
                         songList= spotifySearchReturn.results
+                        Log.d("song details", songList[0].album_url)
                     }
                     if (songList!=null&&songList.isNotEmpty()) {
                         if (songList[0] != null) {
                             binding.spotify1name.text = songList[0].track_name
                             binding.spotify1artist.text=(songList[0].artist)
                             binding.spotify1album.text=songList[0].album_name+" "+songList[0].release_year
+                            binding.spotify1photo.load(songList[0].album_url)
                             binding.spotify1.visibility=View.VISIBLE
                         }
                         else { binding.spotify1.visibility=View.INVISIBLE}
@@ -164,6 +186,7 @@ class ManualSongUploadFragment: Fragment() {
                             binding.spotify2name.text = songList[1].track_name
                             binding.spotify2artist.text = songList[1].artist
                             binding.spotify2album.text=songList[1].album_name+" "+songList[1].release_year
+                            binding.spotify2photo.load(songList[1].album_url)
                             binding.spotify2.visibility=View.VISIBLE
                         }
                         else { binding.spotify2.visibility=View.INVISIBLE}
@@ -171,6 +194,7 @@ class ManualSongUploadFragment: Fragment() {
                             binding.spotify3name.text = songList[2].track_name
                             binding.spotify3artist.text = songList[2].artist
                             binding.spotify3album.text=songList[2].album_name+" "+songList[2].release_year
+                            binding.spotify3photo.load(songList[2].album_url)
                             binding.spotify3.visibility=View.VISIBLE
                         }
                         else { binding.spotify3.visibility=View.INVISIBLE}
@@ -178,6 +202,7 @@ class ManualSongUploadFragment: Fragment() {
                             binding.spotify4name.text = songList[3].track_name
                             binding.spotify4artist.text = songList[3].artist
                             binding.spotify4album.text=songList[3].album_name+" "+songList[3].release_year
+                            binding.spotify4photo.load(songList[3].album_url)
                             binding.spotify4.visibility=View.VISIBLE
                         }
                         else { binding.spotify4.visibility=View.INVISIBLE}
@@ -185,6 +210,7 @@ class ManualSongUploadFragment: Fragment() {
                             binding.spotify5name.text = songList[4].track_name
                             binding.spotify5artist.text = songList[4].artist
                             binding.spotify5album.text=songList[4].album_name+" "+songList[4].release_year
+                            binding.spotify5photo.load(songList[4].album_url)
                             binding.spotify5.visibility=View.VISIBLE
                         }else { binding.spotify5.visibility=View.INVISIBLE}
                     }

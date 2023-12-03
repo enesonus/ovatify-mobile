@@ -47,6 +47,7 @@ class ShowMusicActivity:AppCompatActivity() {
             binding.ratingBar.setIsIndicator(false)
             binding.SaveButton.visibility= View.VISIBLE
             binding.CancelButton.visibility=View.VISIBLE
+            binding.removeButton.visibility=View.VISIBLE
             ratingBeforeChange=binding.ratingBar.rating.toInt()
         }
         binding.SaveButton.setOnClickListener {
@@ -54,6 +55,7 @@ class ShowMusicActivity:AppCompatActivity() {
             binding.EditButton.visibility=View.VISIBLE
             binding.SaveButton.visibility=View.INVISIBLE
             binding.CancelButton.visibility=View.INVISIBLE
+            binding.removeButton.visibility=View.INVISIBLE
             binding.ratingBar.setIsIndicator(true)
             Toast.makeText(this,"Rating changed",Toast.LENGTH_SHORT)
 
@@ -66,6 +68,7 @@ class ShowMusicActivity:AppCompatActivity() {
         binding.EditButton.visibility=View.VISIBLE
         binding.SaveButton.visibility=View.INVISIBLE
         binding.CancelButton.visibility=View.INVISIBLE
+        binding.removeButton.visibility=View.INVISIBLE
         binding.ratingBar.setIsIndicator(true)
         binding.ratingBar.rating=ratingBeforeChange.toFloat()
         Toast.makeText(this,"Canceled",Toast.LENGTH_SHORT)

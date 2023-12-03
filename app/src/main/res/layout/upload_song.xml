@@ -58,7 +58,7 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/fragmentContainerViewUpload"
-                android:name="com.sabanci.ovatify.ManualSongUploadFragment"
+                android:name="com.sabanci.ovatify.fragment.ManualSongUploadFragment"
                 android:layout_marginTop="40dp"
                 android:layout_width="300dp"
                 android:layout_height="550dp" >
