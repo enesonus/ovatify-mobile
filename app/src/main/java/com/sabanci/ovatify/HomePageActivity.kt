@@ -1,5 +1,6 @@
 package com.sabanci.ovatify
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -73,6 +74,11 @@ class HomePageActivity : AppCompatActivity() {
                 binding.dashboardLogo.setImageResource(R.drawable.dashboard_clicked)
                 replaceFragment(DashboardFragment())
             }
+        }
+
+        binding.profileLayout.setOnClickListener{
+            val profileIntent = Intent(this, ProfileActivity::class.java)
+            startActivity(profileIntent)
         }
 
     }
