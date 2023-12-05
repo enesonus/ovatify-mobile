@@ -21,7 +21,7 @@
         >
 
         <TextView
-            android:id="@+id/Music_info"
+            android:id="@+id/Music_info_vertical"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_gravity="center_horizontal|center"
@@ -39,7 +39,7 @@
 
 
             <ImageView
-                android:id="@+id/back_button"
+                android:id="@+id/backButton"
                 android:layout_width="20dp"
                 android:layout_height="45dp"
                 android:src="@drawable/icon"></ImageView>

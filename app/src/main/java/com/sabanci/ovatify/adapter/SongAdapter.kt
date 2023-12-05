@@ -19,6 +19,8 @@ class SongAdapter (private val musicModelList : List<MusicModel>) : RecyclerView
     override fun onBindViewHolder(holder: SongViewHolder, position: Int) {
         holder.binding.apply {
             imageMusic.load(musicModelList[position].imageUrl)
+            textMusicName.text = musicModelList[position].songName
+            textArtistName.text = musicModelList[position].artistName
         }
     }
 
