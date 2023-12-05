@@ -9,10 +9,11 @@ import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.sabanci.ovatify.R
+import com.sabanci.ovatify.data.IhomeclickListener
 import com.sabanci.ovatify.data.Songs
 import com.sabanci.ovatify.databinding.SongRowBinding
 
-class VerticalSongListAdapter(private val songList:List<Songs>)
+class VerticalSongListAdapter(private val songList : ArrayList<Songs>, private val listener: IhomeclickListener)
     : RecyclerView.Adapter<VerticalSongListAdapter.SongViewHolder>()
 {
 

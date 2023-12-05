@@ -37,7 +37,7 @@
 
 
             <ImageView
-                android:id="@+id/back_button"
+                android:id="@+id/backButton"
                 android:layout_width="20dp"
                 android:layout_height="45dp"
                 android:src="@drawable/icon"></ImageView>
