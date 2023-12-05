@@ -3,6 +3,8 @@ import com.sabanci.ovatify.data.FavoriteSongsReturn
 import com.sabanci.ovatify.data.IdAndRate
 import com.sabanci.ovatify.data.RResponse
 import com.sabanci.ovatify.data.RecentlyAddedSongsReturn
+import com.sabanci.ovatify.data.SongDetails
+import com.sabanci.ovatify.data.SongDetailsReturn
 import com.sabanci.ovatify.data.SpotifySearchReturn
 import com.sabanci.ovatify.data.SpotifySongs
 import okhttp3.MultipartBody
@@ -13,6 +15,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Part
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -23,9 +26,15 @@ interface ApiService {
 
     @POST("users/create-user/")
     fun createUser(
-        @Header("Authorization") userToken : String?,
+        @Header("Authorization") userToken : String,
         @Body email: String?
     ): Call<Response<Void>>
+
+    @PUT("users/login/")
+    fun login(
+        @Header("Authorization") userToken: String
+    ): Call<Response<Void>>
+
     @Multipart
     @POST("songs/upload-file/")
     fun uploadFile(
@@ -57,6 +66,11 @@ interface ApiService {
         @Path("entity") entity: String,
         @Query("number_of_songs") numberOfSongs: Int = 10
     ): Call<Map<String, Float>> // Adjust the response type as needed
+
+    @GET("songs/get-song-by-id/")
+    fun getSongById(
+        @Query("song_id") songId : String
+    ):Call<SongDetailsReturn>
 }
 
 

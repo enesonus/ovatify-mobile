@@ -84,7 +84,7 @@ class VerticalMusicActivity:AppCompatActivity() {
                                 // Handle item click here
                                 val clickedItem = songList[position]
                                 val intent = Intent(this@VerticalMusicActivity, ShowMusicActivity::class.java)
-                                intent.putExtra("song", "${songList[position]}")
+                                intent.putExtra("song", songList[position].id)
                                 startActivity(intent)
                                 Toast.makeText( this@VerticalMusicActivity,"Clicked on $clickedItem", Toast.LENGTH_SHORT).show()
                             }
@@ -139,7 +139,7 @@ class VerticalMusicActivity:AppCompatActivity() {
                                 Log.d("Item Position", "${songList[position]}")
                                 val clickedItem = songList[position]
                                 val intent = Intent(this@VerticalMusicActivity, ShowMusicActivity::class.java)
-                                intent.putExtra("song", "${songList[position]}")
+                                intent.putExtra("song", songList[position].id)
                                 startActivity(intent)
                                 Toast.makeText( this@VerticalMusicActivity,"Clicked on $clickedItem", Toast.LENGTH_SHORT).show()
                             }
