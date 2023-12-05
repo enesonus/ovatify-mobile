@@ -194,67 +194,55 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/music2" />
 
-    <RelativeLayout
-        android:id="@+id/Cancel_button"
-        android:layout_width="65dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="75dp"
-        android:layout_marginEnd="270dp"
-        android:layout_marginBottom="39dp"
-        android:background="@drawable/save_cancel_bckgrnd"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ratingBar">
-
-        <ImageView
-            android:id="@+id/Cancel_icon"
-            android:layout_width="55dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="5dp"
-            android:src="@drawable/cancel"></ImageView>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/Save_button"
-        android:layout_width="65dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="276dp"
-        android:layout_marginEnd="86dp"
-        android:layout_marginBottom="45dp"
-        android:background="@drawable/save_cancel_bckgrnd"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ratingBar">
-
-        <ImageView
-            android:id="@+id/Save_icon"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="9dp"
-            android:src="@drawable/save"></ImageView>
-
-    </RelativeLayout>
-
     <Button
-        android:id="@+id/removeButton"
+        android:id="@+id/remove_button_new"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/save_cancel_bckgrnd"
         android:text="Remove"
         android:textColor="@color/white"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/Save_button"
-        app:layout_constraintHorizontal_bias="0.512"
-        app:layout_constraintStart_toEndOf="@+id/Cancel_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ratingBar"
-        app:layout_constraintVertical_bias="0.244" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/cancel_button_new"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/save_cancel_bckgrnd"
+        android:text="Cancel"
+        android:textColor="@color/white"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/remove_button_new"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/save_button_new"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/save_cancel_bckgrnd"
+        android:text="Save"
+        android:textColor="@color/white"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/remove_button_new"
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

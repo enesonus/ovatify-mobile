@@ -122,7 +122,7 @@ class LibraryFragment:Fragment(R.layout.music_list) {
             ) {
                 if (response.isSuccessful)
                 {
-                    Log.e("response log","recently added songs response is successful")
+                    Log.d("response log","recently added songs response is successful")
 
                     val recentlyAddedSongsReturn: RecentlyAddedSongsReturn? = response.body()
 
