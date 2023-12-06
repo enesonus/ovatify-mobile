@@ -1,5 +1,6 @@
 package com.sabanci.ovatify.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sabanci.ovatify.R
+import com.sabanci.ovatify.data.IhomeclickListener
 import com.sabanci.ovatify.databinding.LibraryFragmentBinding
 import com.sabanci.ovatify.databinding.ManualSongUploadFragmentBinding
 import com.sabanci.ovatify.databinding.MusicParentItemBinding
@@ -47,7 +49,21 @@ class LibraryAdapter(private val collection: List<LibraryModel>) : RecyclerView.
                 holder.binding.apply {
                     val collection = collection[position]
                     favoriteSongs.text = collection.title
-                    val songAdapter = SongAdapter(collection.musicModels)
+                    val songAdapter = SongAdapter(collection.musicModels, object :
+                        IhomeclickListener {
+                        override fun onItemClick(position: Int) {
+                            // Handle item click here
+                            Log.d("Item Position", collection.toString())
+                            /*
+                            val clickedItem = songList[position]
+                            val intent = Intent(, ShowMusicActivity::class.java)
+                            intent.putExtra("song", songList[position].id)
+                            startActivity(intent)
+
+                             */
+                            //Toast.makeText( this@VerticalMusicActivity,"Clicked on $clickedItem", Toast.LENGTH_SHORT).show()
+                        }
+                    })
                     rvSongChild.adapter = songAdapter
                 }
 

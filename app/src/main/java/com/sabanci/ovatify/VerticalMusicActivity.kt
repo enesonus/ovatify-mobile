@@ -50,7 +50,7 @@ class VerticalMusicActivity:AppCompatActivity() {
 
         if (listName == "Your Favorites")
         {
-            val callFavoriteSongsReturn = RetrofitClient.apiService.getFavoriteSongs("5")
+            val callFavoriteSongsReturn = RetrofitClient.apiService.getFavoriteSongs("500")
             callFavoriteSongsReturn.enqueue(object : Callback<FavoriteSongsReturn> {
                 override fun onResponse(
                     call: Call<FavoriteSongsReturn>,
@@ -86,11 +86,12 @@ class VerticalMusicActivity:AppCompatActivity() {
                                 val intent = Intent(this@VerticalMusicActivity, ShowMusicActivity::class.java)
                                 intent.putExtra("song", songList[position].id)
                                 startActivity(intent)
-                                Toast.makeText( this@VerticalMusicActivity,"Clicked on $clickedItem", Toast.LENGTH_SHORT).show()
+                                //Toast.makeText( this@VerticalMusicActivity,"Clicked on $clickedItem", Toast.LENGTH_SHORT).show()
                             }
                         })
 
                         recyclerView.adapter = verticalSongsListAdapter
+                        //recyclerView.adapter?.notifyDataSetChanged()
 
                     }
 
@@ -109,7 +110,7 @@ class VerticalMusicActivity:AppCompatActivity() {
 
         else if (listName == "Recently Added Songs")
         {
-            val callRecentlyAddedSongsReturn = RetrofitClient.apiService.getRecentlyAddedSongs("5")
+            val callRecentlyAddedSongsReturn = RetrofitClient.apiService.getRecentlyAddedSongs("500")
             callRecentlyAddedSongsReturn.enqueue(object : Callback<RecentlyAddedSongsReturn> {
                 override fun onResponse(
                     call: Call<RecentlyAddedSongsReturn>,
@@ -141,10 +142,11 @@ class VerticalMusicActivity:AppCompatActivity() {
                                 val intent = Intent(this@VerticalMusicActivity, ShowMusicActivity::class.java)
                                 intent.putExtra("song", songList[position].id)
                                 startActivity(intent)
-                                Toast.makeText( this@VerticalMusicActivity,"Clicked on $clickedItem", Toast.LENGTH_SHORT).show()
+                                //Toast.makeText( this@VerticalMusicActivity,"Clicked on $clickedItem", Toast.LENGTH_SHORT).show()
                             }
                         })
                         recyclerView.adapter = verticalSongsListAdapter
+                        //recyclerView.adapter?.notifyDataSetChanged()
 
                     }
 
@@ -164,11 +166,21 @@ class VerticalMusicActivity:AppCompatActivity() {
 
 
 
+
+
         Log.d("songList in Vertical Music2", "songList: ${songList}")
         //verticalSongsListAdapter = VerticalSongListAdapter(songList)
         //recyclerView.adapter = verticalSongsListAdapter
 
 
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        finish();
+        overridePendingTransition(0, 0);
+        startActivity(intent);
+        overridePendingTransition(0, 0);
     }
 
 

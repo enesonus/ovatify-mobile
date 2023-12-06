@@ -6,7 +6,7 @@ import com.sabanci.ovatify.model.MusicModel
 object SampleData {
 
     private val musicModel= arrayListOf<MusicModel>(
-        MusicModel(Images.imageUrl0, "Deni", "Denideni")
+        //MusicModel(Images.imageUrl0, "Deni", "Denideni")
                 /*
         MusicModel(Images.imageUrl1),
         MusicModel(Images.imageUrl2),

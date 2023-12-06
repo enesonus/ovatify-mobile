@@ -22,6 +22,7 @@ class VerticalSongListAdapter(private val songList : ArrayList<Songs>, private v
         val songImage : ImageView = itemView.findViewById(R.id.songImage)
         val songName : TextView = itemView.findViewById(R.id.songName)
         val artistName : TextView = itemView.findViewById(R.id.artistName)
+        val songId : TextView = itemView.findViewById(R.id.songId)
 
     }
 
@@ -36,10 +37,13 @@ class VerticalSongListAdapter(private val songList : ArrayList<Songs>, private v
 
     override fun onBindViewHolder(holder: SongViewHolder, position: Int) {
 
+
+        holder.itemView.setOnClickListener { listener.onItemClick(position) }
         val song = songList[position]
         holder.songImage.load(song.img_url)
         holder.songName.text = song.name
         holder.artistName.text = song.main_artist
+        holder.songId.text = (position + 1).toString()
     }
 
 }
