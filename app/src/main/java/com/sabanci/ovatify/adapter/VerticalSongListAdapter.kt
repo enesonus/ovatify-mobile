@@ -9,10 +9,11 @@ import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.sabanci.ovatify.R
+import com.sabanci.ovatify.data.IhomeclickListener
 import com.sabanci.ovatify.data.Songs
 import com.sabanci.ovatify.databinding.SongRowBinding
 
-class VerticalSongListAdapter(private val songList:List<Songs>)
+class VerticalSongListAdapter(private val songList : ArrayList<Songs>, private val listener: IhomeclickListener)
     : RecyclerView.Adapter<VerticalSongListAdapter.SongViewHolder>()
 {
 
@@ -21,6 +22,7 @@ class VerticalSongListAdapter(private val songList:List<Songs>)
         val songImage : ImageView = itemView.findViewById(R.id.songImage)
         val songName : TextView = itemView.findViewById(R.id.songName)
         val artistName : TextView = itemView.findViewById(R.id.artistName)
+        val songId : TextView = itemView.findViewById(R.id.songId)
 
     }
 
@@ -35,10 +37,13 @@ class VerticalSongListAdapter(private val songList:List<Songs>)
 
     override fun onBindViewHolder(holder: SongViewHolder, position: Int) {
 
+
+        holder.itemView.setOnClickListener { listener.onItemClick(position) }
         val song = songList[position]
         holder.songImage.load(song.img_url)
         holder.songName.text = song.name
         holder.artistName.text = song.main_artist
+        holder.songId.text = (position + 1).toString()
     }
 
 }

@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -56,6 +57,7 @@ android {
 }
 
 dependencies {
+
 
     implementation("co.yml:ycharts:2.1.0")
     implementation("com.diogobernardino:williamchart:3.10.1")

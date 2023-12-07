@@ -19,10 +19,10 @@
         tools:ignore="MissingConstraints"
         >
         <TextView
-            android:id="@+id/Upload"
+            android:id="@+id/Friends"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="@string/upload"
+            android:text="Friends"
             android:textColor="@color/home_ek2_color"
             android:layout_gravity="center_horizontal|center"
             android:gravity="center"
@@ -37,7 +37,7 @@
 
 
             <ImageView
-                android:id="@+id/backButton"
+                android:id="@+id/back_button"
                 android:layout_width="20dp"
                 android:layout_height="45dp"
                 android:src="@drawable/icon"></ImageView>
@@ -47,33 +47,33 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="300dp"
+        android:layout_width="356dp"
         android:layout_height="590dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bar">
 
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/fragmentContainerViewUpload"
-                android:name="com.sabanci.ovatify.fragment.ManualSongUploadFragment"
-                android:layout_marginTop="40dp"
-                android:layout_width="300dp"
-                android:layout_height="550dp" >
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragmentContainerViewUpload"
+            android:name="com.sabanci.ovatify.fragment.FriendsFragment"
+            android:layout_marginTop="40dp"
+            android:layout_width="356dp"
+            android:layout_height="550dp" >
 
-            </androidx.fragment.app.FragmentContainerView>
+        </androidx.fragment.app.FragmentContainerView>
 
         <RelativeLayout
-            android:id="@+id/song_button"
-            android:layout_width="150dp"
+            android:id="@+id/friend_button"
+            android:layout_width="89dp"
             android:layout_height="40dp"
             android:background="@drawable/upload_open">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="@string/song_upload"
+                android:text="Friends"
                 android:textColor="@color/home_ek2_color"
                 android:layout_gravity="center_horizontal|center"
                 android:gravity="center"
@@ -81,15 +81,47 @@
                 />
         </RelativeLayout>
         <RelativeLayout
-            android:id="@+id/file_button"
-            android:layout_width="150dp"
+            android:id="@+id/add_button"
+            android:layout_width="89dp"
             android:layout_height="40dp"
-            android:layout_marginStart="150dp"
+            android:layout_marginStart="89dp"
             android:background="@drawable/upload_closed">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="@string/file_upload"
+                android:text="Add"
+                android:textColor="@color/home_ek2_color"
+                android:layout_gravity="center_horizontal|center"
+                android:gravity="center"
+                android:textSize="18dp"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/incoming_button"
+            android:layout_width="89dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="178dp"
+            android:background="@drawable/upload_closed">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Incoming"
+                android:textColor="@color/home_ek2_color"
+                android:layout_gravity="center_horizontal|center"
+                android:gravity="center"
+                android:textSize="18dp"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/outgoing_button"
+            android:layout_width="89dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="267dp"
+            android:background="@drawable/upload_closed">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Outgoing"
                 android:textColor="@color/home_ek2_color"
                 android:layout_gravity="center_horizontal|center"
                 android:gravity="center"

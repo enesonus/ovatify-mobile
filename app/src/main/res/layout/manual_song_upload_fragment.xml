@@ -30,6 +30,7 @@
             android:backgroundTint="@android:color/transparent"
             android:hint="Search"
             android:textColor="@color/home_ek2_color"
+            android:textColorHint="#FFFFFF"
             android:textSize="19sp" />
 
         <RelativeLayout

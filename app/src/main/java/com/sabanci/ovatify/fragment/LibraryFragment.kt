@@ -15,7 +15,7 @@ import com.sabanci.ovatify.R
 import com.sabanci.ovatify.ShowMusicActivity
 import com.sabanci.ovatify.UploadActivity
 import com.sabanci.ovatify.VerticalMusicActivity
-import com.sabanci.ovatify.adapter.LibraryAdapter
+//import com.sabanci.ovatify.adapter.LibraryAdapter
 import com.sabanci.ovatify.adapter.LibraryAdapter2
 import com.sabanci.ovatify.api.RetrofitClient
 import com.sabanci.ovatify.data.FavoriteSongsReturn
@@ -31,12 +31,12 @@ import retrofit2.Response
 import java.util.Collections
 
 class LibraryFragment:Fragment(R.layout.music_list) {
-    private lateinit var favoriteSongsList: List<Songs>
-    private lateinit var musicModelListFavorites: List<MusicModel>
-    private lateinit var musicModelListRecents: List<MusicModel>
-    private lateinit var recentlyAddedSongsList: List<Songs>
-    private lateinit var songCollections: List<LibraryModel>
-    private lateinit var adapter: LibraryAdapter
+    private lateinit var favoriteSongsList: ArrayList<Songs>
+    private lateinit var musicModelListFavorites: ArrayList<MusicModel>
+    private lateinit var musicModelListRecents: ArrayList<MusicModel>
+    private lateinit var recentlyAddedSongsList: ArrayList<Songs>
+    private lateinit var songCollections: ArrayList<LibraryModel>
+    //private lateinit var adapter: LibraryAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var datalist:ArrayList<Any> //data is not initialized yet
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,7 +44,7 @@ class LibraryFragment:Fragment(R.layout.music_list) {
 
         //val rootView = inflater.inflate(R.layout.music_list, container, false)
 
-        songCollections = mutableListOf()
+        songCollections = arrayListOf()
 
         val myButton = view.findViewById<Button>(R.id.button2)
         myButton.setOnClickListener {
@@ -70,24 +70,30 @@ class LibraryFragment:Fragment(R.layout.music_list) {
 
                     val favoriteSongsReturn: FavoriteSongsReturn? = response.body()
 
-                    Log.e("favoriteSongsReturn","favorite songs return after list : ${favoriteSongsReturn}")
-                    Log.d("response tag", "${response.body()}")
+                    //Log.e("favoriteSongsReturn","favorite songs return after list : ${favoriteSongsReturn}")
+                    Log.d("response body", "${response.body()}")
 
-                    favoriteSongsList = mutableListOf()
-                    musicModelListFavorites = mutableListOf()
-/*
+
+                    favoriteSongsList = arrayListOf()
+                    musicModelListFavorites = arrayListOf()
+
+
+
+
                     if (favoriteSongsReturn != null)
                     {
-                        favoriteSongsList = favoriteSongsReturn.results
+                        favoriteSongsList = favoriteSongsReturn.songs
+                        Log.d("favoriteSongsList", "${favoriteSongsReturn.songs}")
                         for (song in favoriteSongsList)
                         {
-                            musicModelListFavorites += MusicModel(song.img_url)
+                            musicModelListFavorites += MusicModel(song.id, song.img_url, song.name, song.main_artist)
                         }
                     }
 
                     songCollections += LibraryModel("Your Favorites" , musicModelListFavorites)
+                    recyclerView.adapter?.notifyDataSetChanged()
 
- */
+                    Log.d("songCollections1", "songCollections: ${songCollections}")
 
                 }
 
@@ -108,7 +114,6 @@ class LibraryFragment:Fragment(R.layout.music_list) {
 
 
 
-
         val callRecentlyAddedSongsReturn = RetrofitClient.apiService.getRecentlyAddedSongs("5")
         callRecentlyAddedSongsReturn.enqueue(object : Callback<RecentlyAddedSongsReturn> {
             override fun onResponse(
@@ -117,27 +122,34 @@ class LibraryFragment:Fragment(R.layout.music_list) {
             ) {
                 if (response.isSuccessful)
                 {
-                    Log.e("response log","recently added songs response is successful")
+                    Thread.sleep(100)
+                    Log.d("response log","recently added songs response is successful")
 
                     val recentlyAddedSongsReturn: RecentlyAddedSongsReturn? = response.body()
 
-                    recentlyAddedSongsList = mutableListOf()
-                    musicModelListRecents = mutableListOf()
 
-                    /*
+
+                    musicModelListRecents = arrayListOf()
+                    recentlyAddedSongsList = arrayListOf()
+
+
                     if (recentlyAddedSongsReturn != null)
                     {
-                        recentlyAddedSongsList = recentlyAddedSongsReturn.results
+
+                        recentlyAddedSongsList = recentlyAddedSongsReturn.songs
                         for (song in recentlyAddedSongsList)
                         {
-                            musicModelListRecents += MusicModel(song.img_url)
+                            musicModelListRecents += MusicModel(song.id, song.img_url, song.name, song.main_artist)
                         }
                     }
 
                     songCollections += LibraryModel("Recently Added Songs" , musicModelListRecents)
+                    recyclerView.adapter?.notifyDataSetChanged()
 
-                     */
+
                 }
+
+
 
                 else
                 {
@@ -157,24 +169,26 @@ class LibraryFragment:Fragment(R.layout.music_list) {
 
 
 
+
+        Log.d("collections comparison", "SampleData.collections: ${SampleData.collections}")
+        Log.d("collections comparison", "songCollections: ${songCollections}")
+
         recyclerView = view.findViewById(R.id.library_recycler_view)
-        recyclerView.adapter=LibraryAdapter2(SampleData.collections, object : IhomeclickListener{
+        recyclerView.adapter=LibraryAdapter2(songCollections, object : IhomeclickListener{
             override fun onItemClick(position: Int) {
-                val clickedItem = SampleData.collections[position]
+                Log.d("Sent Intent", "${songCollections[position]}")
+                val clickedItem = songCollections[position]
                 val intent = Intent(requireContext(), VerticalMusicActivity::class.java)
-                //    intent.putExtra("key", "value") will implement
+                intent.putExtra("List Title", songCollections[position].title)
                 startActivity(intent)
-                Toast.makeText(requireContext(), "Clicked on $clickedItem", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(requireContext(), "Clicked on $clickedItem", Toast.LENGTH_SHORT).show()
             }
 
         })
 
+        recyclerView.adapter?.notifyDataSetChanged()
+
         //return rootView
     }
-
-
-
-
-
 
 }
