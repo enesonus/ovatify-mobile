@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="356dp"
+    android:layout_height="550dp"
+    android:background="@drawable/upload_bottom"
+    >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="270dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/choose_file"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/friend_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="35dp"
+            android:backgroundTint="@android:color/transparent"
+            android:hint="username"
+            android:textColor="@color/home_ek2_color"
+            android:textSize="19sp" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/send_request_button"
+        android:layout_width="220dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/upload_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="1dp"
+            android:layout_gravity="center_horizontal|center"
+            android:gravity="center"
+            android:text="Send a Friendship Request! "
+            android:textColor="@color/home_ek2_color"
+            android:textSize="16sp"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
