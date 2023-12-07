@@ -86,7 +86,7 @@ class LibraryFragment:Fragment(R.layout.music_list) {
                         Log.d("favoriteSongsList", "${favoriteSongsReturn.songs}")
                         for (song in favoriteSongsList)
                         {
-                            musicModelListFavorites += MusicModel(song.img_url, song.name, song.main_artist)
+                            musicModelListFavorites += MusicModel(song.id, song.img_url, song.name, song.main_artist)
                         }
                     }
 
@@ -113,7 +113,7 @@ class LibraryFragment:Fragment(R.layout.music_list) {
 
 
 
-        Thread.sleep(100)
+
         val callRecentlyAddedSongsReturn = RetrofitClient.apiService.getRecentlyAddedSongs("5")
         callRecentlyAddedSongsReturn.enqueue(object : Callback<RecentlyAddedSongsReturn> {
             override fun onResponse(
@@ -122,6 +122,7 @@ class LibraryFragment:Fragment(R.layout.music_list) {
             ) {
                 if (response.isSuccessful)
                 {
+                    Thread.sleep(100)
                     Log.d("response log","recently added songs response is successful")
 
                     val recentlyAddedSongsReturn: RecentlyAddedSongsReturn? = response.body()
@@ -138,7 +139,7 @@ class LibraryFragment:Fragment(R.layout.music_list) {
                         recentlyAddedSongsList = recentlyAddedSongsReturn.songs
                         for (song in recentlyAddedSongsList)
                         {
-                            musicModelListRecents += MusicModel(song.img_url, song.name, song.main_artist)
+                            musicModelListRecents += MusicModel(song.id, song.img_url, song.name, song.main_artist)
                         }
                     }
 
@@ -180,17 +181,14 @@ class LibraryFragment:Fragment(R.layout.music_list) {
                 val intent = Intent(requireContext(), VerticalMusicActivity::class.java)
                 intent.putExtra("List Title", songCollections[position].title)
                 startActivity(intent)
-                Toast.makeText(requireContext(), "Clicked on $clickedItem", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(requireContext(), "Clicked on $clickedItem", Toast.LENGTH_SHORT).show()
             }
 
         })
 
+        recyclerView.adapter?.notifyDataSetChanged()
+
         //return rootView
     }
-
-
-
-
-
 
 }
