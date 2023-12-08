@@ -1,5 +1,6 @@
 package com.sabanci.ovatify
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.sabanci.ovatify.databinding.ProfilePageBinding
@@ -15,6 +16,10 @@ class ProfileActivity:AppCompatActivity() {
 
         binding.backButton.setOnClickListener{
             onBackPressed()
+        }
+        binding.friendsText.setOnClickListener {
+            val intent = Intent(this, FriendFlowActivity::class.java)
+            startActivity(intent)
         }
 
 
