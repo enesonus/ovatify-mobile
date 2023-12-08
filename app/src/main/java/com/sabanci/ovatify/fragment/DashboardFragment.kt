@@ -2,7 +2,9 @@ package com.sabanci.ovatify.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,7 +15,11 @@ import com.sabanci.ovatify.adapter.DashboardAdapter
 import com.sabanci.ovatify.adapter.HomeAdapter
 import com.sabanci.ovatify.api.RetrofitClient
 import com.sabanci.ovatify.data.BarChartData
+import com.sabanci.ovatify.data.ChartData
+import com.sabanci.ovatify.data.FavoriteSongsReturn
 import com.sabanci.ovatify.data.IhomeclickListener
+import com.sabanci.ovatify.data.LineChartData
+import com.sabanci.ovatify.data.SongCounts
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,42 +27,23 @@ import retrofit2.Response
 class DashboardFragment:Fragment(R.layout.dashboard_fragment) {
     private lateinit var adapter: DashboardAdapter
     private lateinit var recyclerView: RecyclerView
-    private lateinit var datalist:ArrayList<BarChartData> //data is not initialized yet
+    private lateinit var datalist:ArrayList<ChartData> //data is not initialized yet
+    private lateinit var prbar:ProgressBar
+    private var tracker=0
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         datalist=ArrayList()
+        prbar=view.findViewById<ProgressBar>(R.id.progressBardashboard)
         datainitialize()
         val layoutManager= LinearLayoutManager(context)
         recyclerView=view.findViewById(R.id.dashboard_recview)
         recyclerView.layoutManager=layoutManager
         recyclerView.setHasFixedSize(true)
-        adapter= DashboardAdapter(datalist
-        /*,object : IhomeclickListener {
-            override fun onItemClick(position: Int) {
-                // Handle item click here
-                val clickedItem = datalist[position]
-                val intent = Intent(requireContext(), ShowMusicActivity::class.java)
-                //    intent.putExtra("key", "value") will implement
-                startActivity(intent)
-                Toast.makeText(requireContext(), "Clicked on $clickedItem", Toast.LENGTH_SHORT).show()
-            }
-        }*/
-        )
+        adapter= DashboardAdapter(datalist)
         recyclerView.adapter=adapter
     }
     private fun datainitialize(){
-       /* val valuelist=ArrayList<Float>()
-        valuelist.add(5F)
-        valuelist.add(4F)
-        valuelist.add(3F)
-        val descrp="selam kanzi"
-        val namelist=ArrayList<String>()
-        namelist.add("bir")
-        namelist.add("iki")
-        namelist.add("üc")
-        val barChartData=BarChartData(valuelist,descrp,namelist)
-        datalist.add(barChartData)*/
-        //data will be initialized here
+        prbar.visibility=View.VISIBLE
         val callforgenre = RetrofitClient.apiService.getEntityCount(entity = "genres")
         callforgenre.enqueue(object : Callback<Map<String, Float>> {
             override fun onResponse(call: Call<Map<String, Float>>, response: Response<Map<String, Float>>) {
@@ -65,7 +52,8 @@ class DashboardFragment:Fragment(R.layout.dashboard_fragment) {
                     // Handle successful response, e.g., update UI with genre counts
                     val genreNames = ArrayList<String>(genreCounts.keys)
                     val genreCountsList = ArrayList<Float>(genreCounts.values)
-                    datalist.add(BarChartData(genreCountsList,"Added Songs By Genre",genreNames))
+
+                    datalist.add(ChartData(BarChartData(ArrayList(genreCountsList.subList(0, minOf(5, genreCountsList.size))),"Added Songs By Genre",ArrayList(genreNames.subList(0, minOf(5, genreNames.size)))),null))
                 } else {
                     // Handle different HTTP status codes
                 }
@@ -83,7 +71,8 @@ class DashboardFragment:Fragment(R.layout.dashboard_fragment) {
                     // Handle successful response, e.g., update UI with genre counts
                     val genreNames = ArrayList<String>(genreCounts.keys)
                     val genreCountsList = ArrayList<Float>(genreCounts.values)
-                    datalist.add(BarChartData(genreCountsList,"Added Songs By Tempo",genreNames))
+                    datalist.add(ChartData(BarChartData(ArrayList(genreCountsList.subList(0, minOf(5, genreCountsList.size))),"Added Songs By Tempo",ArrayList(genreNames.subList(0, minOf(5, genreNames.size)))),null))
+                    trackForBar()
                 } else {
                     // Handle different HTTP status codes
                 }
@@ -101,7 +90,9 @@ class DashboardFragment:Fragment(R.layout.dashboard_fragment) {
                     // Handle successful response, e.g., update UI with genre counts
                     val genreNames = ArrayList<String>(genreCounts.keys)
                     val genreCountsList = ArrayList<Float>(genreCounts.values)
-                    datalist.add(BarChartData(genreCountsList,"Added Songs By Artist",genreNames))
+
+                    datalist.add(ChartData(BarChartData(ArrayList(genreCountsList.subList(0, minOf(5, genreCountsList.size))),"Added Songs By Artist",ArrayList(genreNames.subList(0, minOf(5, genreNames.size)))),null))
+                    trackForBar()
                 } else {
                     // Handle different HTTP status codes
                 }
@@ -119,7 +110,8 @@ class DashboardFragment:Fragment(R.layout.dashboard_fragment) {
                     // Handle successful response, e.g., update UI with genre counts
                     val genreNames = ArrayList<String>(genreCounts.keys)
                     val genreCountsList = ArrayList<Float>(genreCounts.values)
-                    datalist.add(BarChartData(genreCountsList,"Added Songs By Mood",genreNames))
+                    datalist.add(ChartData(BarChartData(ArrayList(genreCountsList.subList(0, minOf(5, genreCountsList.size))),"Added Songs By Mood",ArrayList(genreNames.subList(0, minOf(5, genreNames.size)))),null))
+                    trackForBar()
                 } else {
                     // Handle different HTTP status codes
                 }
@@ -129,5 +121,35 @@ class DashboardFragment:Fragment(R.layout.dashboard_fragment) {
                 // Handle network or other exceptions
             }
         })
+        val callforrecentaddition=RetrofitClient.apiService.getRecentAdditionCounts()
+        callforrecentaddition.enqueue(object:Callback<SongCounts>{
+            override fun onResponse(call: Call<SongCounts>, response: Response<SongCounts>) {
+              if(response.isSuccessful){
+                  val genreCounts=response.body()
+                  val dates = ArrayList<String>()
+                  val counts = ArrayList<Int>()
+                  if (genreCounts != null) {
+                      for (dateAndCount in genreCounts.song_counts) {
+                          dates.add(dateAndCount.date)
+                          counts.add(dateAndCount.count)
+                      }
+                  }
+                  datalist.add(ChartData(null, LineChartData(counts,"Recent Additions per Day",dates)))
+                  trackForBar()
+              }
+            }
+
+            override fun onFailure(call: Call<SongCounts>, t: Throwable) {
+                Log.e("apicall"," recent failed")
+            }
+        })
+
+    }
+    private fun trackForBar(){
+        tracker++
+        if(tracker==3){
+            prbar.visibility=View.INVISIBLE
+            adapter.notifyDataSetChanged()
+        }
     }
 }

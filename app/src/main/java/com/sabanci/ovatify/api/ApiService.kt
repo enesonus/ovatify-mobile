@@ -1,14 +1,19 @@
 
+import com.sabanci.ovatify.data.AllFriendsReturn
 import com.sabanci.ovatify.data.FavoriteSongsReturn
+import com.sabanci.ovatify.data.FriendReturn
+import com.sabanci.ovatify.data.Friends
 import com.sabanci.ovatify.data.IdAndRate
 import com.sabanci.ovatify.data.NewSongRating
 import com.sabanci.ovatify.data.RResponse
 import com.sabanci.ovatify.data.RecentlyAddedSongsReturn
+import com.sabanci.ovatify.data.SongCounts
 import com.sabanci.ovatify.data.SongDetails
 import com.sabanci.ovatify.data.SongDetailsReturn
 import com.sabanci.ovatify.data.SpotifySearchReturn
 import com.sabanci.ovatify.data.SpotifySongs
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
@@ -66,7 +71,6 @@ interface ApiService {
     @GET("users/get-favorite-{entity}/")
     fun getEntityCount(
         @Path("entity") entity: String,
-        @Query("number_of_songs") numberOfSongs: Int = 10
     ): Call<Map<String, Float>> // Adjust the response type as needed
 
     @GET("songs/get-song-by-id/")
@@ -85,6 +89,34 @@ interface ApiService {
     fun deleteSongRating(
         @Query("song_id") songId : String
     ) : Call<Void>
+    @GET("users/get-all-friends/")
+    fun getAllFriends():Call<AllFriendsReturn>
+
+    @POST("/users/remove-friend/")
+    fun removeFriend(
+        @Query("friend_id") friend_id:String
+    ): Call<Void>
+    @POST("users/add-friend/")
+    fun addFriend(
+        @Query("friend_id") friend_id:String
+    ):Call<Void>
+    @GET("users/get-all-incoming-requests/")
+    fun getIncomingRequests():Call<FriendReturn>
+
+    @POST("users/accept-friend-request/")
+    fun acceptFriendRequest(
+        @Body requestBody: Map<String,String>): Call<RResponse>
+    @POST("users/reject-friend-request/")
+    fun rejectFriendRequest(
+        @Body requestBody: Map<String,String>): Call<RResponse>
+    @GET("users/get-all-outgoing-requests/")
+    fun getOutgoingRequests():Call<FriendReturn>
+    @POST("users/send-friend-request/")
+    fun sendFriendRequest(@Body requestBody: Map<String,String>): Call<RResponse>
+    @GET("users/get-recent-addition-counts/")
+    fun getRecentAdditionCounts():Call<SongCounts>
+
+    
 }
 
 

@@ -10,7 +10,7 @@
     android:background="@color/_bg__mobile_dashboard_ek2_color">
 
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/description2"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginStart="50dp"
@@ -22,8 +22,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></TextView>
 
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/bar_chart"
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/line_chart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="10dp"
@@ -35,10 +35,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
-    </com.github.mikephil.charting.charts.BarChart>
+    </com.github.mikephil.charting.charts.LineChart>
 
     <Button
-        android:id="@+id/shareButton"
+        android:id="@+id/shareButton2"
         android:layout_width="90dp"
         android:layout_height="50dp"
         android:layout_marginStart="294dp"
