@@ -3,7 +3,7 @@
         android:id="@+id/image1"
         android:icon="@drawable/first3x"
         android:title="Image 1"
-         />
+        />
     <item
         android:id="@+id/image2"
         android:title="Image 2"

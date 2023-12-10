@@ -7,14 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.sabanci.ovatify.R
 import com.sabanci.ovatify.ShowMusicActivity
+import com.sabanci.ovatify.VerticalMusicActivity
 import com.sabanci.ovatify.data.IhomeclickListener
-import com.sabanci.ovatify.data.OneSong
-import com.sabanci.ovatify.data.Song
-import com.sabanci.ovatify.databinding.HorizontalSongsBinding
 import com.sabanci.ovatify.databinding.MusicParentItemBinding
 import com.sabanci.ovatify.model.LibraryModel
 
@@ -52,51 +49,66 @@ class HomeAdapter2(private val songList : List<LibraryModel>, private val listen
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             FIRST_ITEM -> {
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.head_home, parent, false)
-                HomeAdapter2.FirstViewHolder(view)
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.new_head_home, parent, false)
+                FirstViewHolder(view)
+
             }
             else -> {
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.explore_music_list_fragment, parent, false)
-                HomeAdapter2.CollectionViewHolder(view)
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.music_parent_item, parent, false)
+                CollectionViewHolder(view)
             }
         }
     }
 
     override fun getItemCount(): Int {
+        Log.d("List Size", "${songList.size}")
         return songList.size
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is HomeAdapter2.FirstViewHolder -> {
+            is FirstViewHolder -> {
                 // Bind data for the first item
                 // For instance: holder.bind(dataList[position])
                 //will implement when backend data comes
+                Log.d("first view holder", "first view holder works")
             }
-            is HomeAdapter2.CollectionViewHolder -> {
+
+            is CollectionViewHolder -> {
 
                 // Bind data for other items
                 // For instance: holder.bind(dataList[position])
                 //will implement when backend data comes
+                Log.d("collection view holder", "collection view holder works")
+
+                Log.d("songlist size", songList[1].musicModels.size.toString())
+                //songList[1].musicModels
 
                 holder.binding.apply {
                     val collection = songList[position]
                     favoriteSongs.text =collection.title
+
+                    favoriteSongs.setOnClickListener{
+                        val intent = Intent(holder.itemView.context, VerticalMusicActivity::class.java)
+                        intent.putExtra("List Title", collection.title)
+                        holder.itemView.context.startActivity(intent)
+                    }
+
                     val songAdapter = SongAdapter(collection.musicModels, object : IhomeclickListener {
                         override fun onItemClick(position: Int) {
                             // Handle item click here
-                            Log.d("Item Position", "${songList[position]}")
-                            /*
-                            val clickedItem = songList[position]
-                            val intent = Intent(, ShowMusicActivity::class.java)
-                            intent.putExtra("song", songList[position].id)
-                            startActivity(intent)
-
-                             */
+                            Log.d("Item Position In Main Page Your Fvaorites", position.toString())
+                            //Log.d("Item Position", "${songList[position]}")
+                            val context = holder.itemView.context
+                            val clickedItem = collection
+                            val intent = Intent(context, ShowMusicActivity::class.java)
+                            intent.putExtra("song", collection.musicModels[position].id)
+                            context.startActivity(intent)
                             //Toast.makeText( this@VerticalMusicActivity,"Clicked on $clickedItem", Toast.LENGTH_SHORT).show()
                         }
                     })
                     rvSongChild.adapter=songAdapter
+                    rvSongChild.adapter?.notifyDataSetChanged()
                 }
 
                 holder.itemView.setOnClickListener{

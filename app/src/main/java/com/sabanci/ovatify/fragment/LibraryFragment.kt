@@ -41,6 +41,7 @@ class LibraryFragment:Fragment(R.layout.music_list) {
     private lateinit var datalist:ArrayList<Any> //data is not initialized yet
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //TokenManager.initialize(requireContext())
 
         //val rootView = inflater.inflate(R.layout.music_list, container, false)
 
@@ -53,6 +54,9 @@ class LibraryFragment:Fragment(R.layout.music_list) {
 
         }
 
+        getFavoriteSongs("5")
+
+        /*
         val callFavoriteSongsReturn = RetrofitClient.apiService.getFavoriteSongs("5")
 
         Log.e("retrofit","retrofit favorite songs initial call okay")
@@ -109,6 +113,8 @@ class LibraryFragment:Fragment(R.layout.music_list) {
             }
         }
         )
+
+         */
 
 
 
@@ -190,5 +196,84 @@ class LibraryFragment:Fragment(R.layout.music_list) {
 
         //return rootView
     }
+
+    override fun onResume() {
+        super.onResume()
+        //recyclerView.adapter?.notifyDataSetChanged()
+        //replaceFragment(LibraryFragment())
+        //getFavoriteSongs("5")
+    }
+
+
+    private fun getFavoriteSongs(numberOfSongs: String)
+    {
+        val callFavoriteSongsReturn = RetrofitClient.apiService.getFavoriteSongs(numberOfSongs)
+
+        Log.e("retrofit","retrofit favorite songs initial call okay")
+
+        callFavoriteSongsReturn.enqueue(object : Callback<FavoriteSongsReturn> {
+            override fun onResponse(
+                call: Call<FavoriteSongsReturn>,
+                response: Response<FavoriteSongsReturn>
+            ) {
+                Log.d("response tag", "${response}")
+
+                if (response.isSuccessful)
+                {
+                    Log.e("favoriteSongsReturn","favorite songs return after list before: ")
+
+                    val favoriteSongsReturn: FavoriteSongsReturn? = response.body()
+
+                    //Log.e("favoriteSongsReturn","favorite songs return after list : ${favoriteSongsReturn}")
+                    Log.d("response body", "${response.body()}")
+
+
+                    favoriteSongsList = arrayListOf()
+                    musicModelListFavorites = arrayListOf()
+
+
+
+
+                    if (favoriteSongsReturn != null)
+                    {
+                        favoriteSongsList = favoriteSongsReturn.songs
+                        Log.d("favoriteSongsList", "${favoriteSongsReturn.songs}")
+                        for (song in favoriteSongsList)
+                        {
+                            musicModelListFavorites += MusicModel(song.id, song.img_url, song.name, song.main_artist)
+                        }
+                    }
+
+                    songCollections += LibraryModel("Your Favorites" , musicModelListFavorites)
+                    recyclerView.adapter?.notifyDataSetChanged()
+
+                    Log.d("songCollections1", "songCollections: ${songCollections}")
+
+                }
+
+                else
+                {
+                    Log.e("response log","favorite songs response is not successful ${response.code()}")
+
+                }
+            }
+
+            override fun onFailure(call: Call<FavoriteSongsReturn>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+        }
+        )
+    }
+
+    /*
+
+    fun replaceFragment(fragment: Fragment){
+        val fragmentmanager= supportFragmentManager
+        val trans=fragmentmanager.beginTransaction()
+        trans.replace(R.id.fragmentContainerView,fragment)
+        trans.commit()
+    }
+
+     */
 
 }

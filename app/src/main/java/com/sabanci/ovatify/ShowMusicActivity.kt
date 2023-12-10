@@ -1,5 +1,6 @@
 package com.sabanci.ovatify
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -12,6 +13,7 @@ import com.sabanci.ovatify.data.SongDetails
 import com.sabanci.ovatify.data.SongDetailsReturn
 import com.sabanci.ovatify.databinding.NewShowMusicBinding
 import com.sabanci.ovatify.databinding.ShowMusicNewBinding
+import com.sabanci.ovatify.fragment.LibraryFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,6 +21,8 @@ import retrofit2.Response
 class ShowMusicActivity:AppCompatActivity() {
 
     private lateinit var theSongDetails: SongDetails
+
+    private var isRatingEntered : Boolean? = null
 
     lateinit var binding:NewShowMusicBinding
     var ratingBeforeChange:Int=0
@@ -81,6 +85,8 @@ class ShowMusicActivity:AppCompatActivity() {
             ratingBeforeChange=binding.ratingBar.rating.toInt()
             Log.d("New Rating", "Rating when clicked edit button: ${newRating}")
         }
+
+
         binding.SaveButton.setOnClickListener {
             //will change the rating when API comes
             binding.EditButton.visibility=View.VISIBLE
@@ -91,12 +97,29 @@ class ShowMusicActivity:AppCompatActivity() {
             Toast.makeText(this,"Rating changed",Toast.LENGTH_SHORT)
             newRating = binding.ratingBar.rating.toFloat()
 
-            if (intent.hasExtra("song")) {
-                // Retrieve the serializable object using the key
-                val receivedObject = intent.getStringExtra("song") as String
-                editRating(receivedObject, newRating)
+            Log.d("Is Rating Entered?", isRatingEntered.toString())
 
+            if (isRatingEntered == true)
+            {
+                if (intent.hasExtra("song")) {
+                    // Retrieve the serializable object using the key
+                    val receivedObject = intent.getStringExtra("song") as String
+                    editRating(receivedObject, newRating)
+
+                }
             }
+
+            else
+            {
+                if (intent.hasExtra("song")) {
+                    // Retrieve the serializable object using the key
+                    val receivedObject = intent.getStringExtra("song") as String
+                    addSongRating(receivedObject, newRating)
+
+                }
+            }
+
+
 
 
 
@@ -123,7 +146,11 @@ class ShowMusicActivity:AppCompatActivity() {
 
             }
 
-            onBackPressed()
+            //onBackPressed()
+            //replaceFragment(LibraryFragment())
+
+            var newIntent = Intent(this, HomePageActivity::class.java)
+            startActivity(newIntent)
 
 
         }
@@ -162,6 +189,8 @@ class ShowMusicActivity:AppCompatActivity() {
 
                     if (songDetailsReturn != null)
                     {
+                        var count = 0
+
                         theSongDetails = songDetailsReturn.song_info
                         Log.d("Show Music Info Details", "Song Details: ${theSongDetails}")
                         if (theSongDetails.name != null)
@@ -169,17 +198,48 @@ class ShowMusicActivity:AppCompatActivity() {
                             binding.musicname.text = theSongDetails.name
                         }
 
+
+
+                        count = 0
                         for (artist in theSongDetails.artists)
                         {
+                            if (count == 0)
+                            {
+                                binding.musicartist.text = "Artist: " + artist
+                                count++
+                            }
+
+                            else
+                            {
+                                binding.musicartist.text = binding.musicartist.text.toString() + ", " + artist
+
+                            }
+
+                            /*
                             binding.musicartist.text = "Artist: " + artist
                             break
+                             */
                         }
                         //binding.musicartist.text = "Artist: " + theSongDetails.artists[0]
 
+                        count = 0
                         for (album in theSongDetails.albums)
                         {
+                            if (count == 0)
+                            {
+                                binding.musicalbum.text = "Album: " + album
+                                count++
+                            }
+
+                            else
+                            {
+                                binding.musicalbum.text = binding.musicalbum.text.toString() + ", " + album
+                            }
+                            /*
                             binding.musicalbum.text = "Album: " + album
                             break
+
+                             */
                         }
                         //binding.musicalbum.text = "Album: " + theSongDetails.albums[0]
 
@@ -188,18 +248,48 @@ class ShowMusicActivity:AppCompatActivity() {
                             binding.musicyear.text = "Year: " + theSongDetails.release_year.toString()
                         }
 
+                        count = 0
                         for (genre in theSongDetails.genres)
                         {
+                            if (count == 0)
+                            {
+                                binding.musicgenres.text = "Genre: " + genre
+                                count++
+                            }
+
+                            else
+                            {
+                                binding.musicgenres.text = binding.musicgenres.text.toString() + ", " + genre
+                            }
+
+                            /*
                             binding.musicgenres.text = "Genre: " + genre
                             break
+
+                             */
                         }
                         //binding.musicgenres.text = "Genre: " + theSongDetails.genres[0]
 
 
+                        count = 0
                         for (musicInstrument in theSongDetails.instruments)
                         {
+                            if (count == 0)
+                            {
+                                binding.musicInstruments.text = "Instruments: " + musicInstrument
+                                count++
+                            }
+
+                            else
+                            {
+                                binding.musicInstruments.text = binding.musicInstruments.text.toString() + ", " + musicInstrument
+                            }
+
+                            /*
                             binding.musicInstruments.text = "Instruments: " + musicInstrument
                             break
+
+                             */
                         }
                         //binding.musicInstruments.text = "Instruments: " + theSongDetails.instruments[0]
 
@@ -211,6 +301,8 @@ class ShowMusicActivity:AppCompatActivity() {
 
                         if (theSongDetails.user_rating != null)
                         {
+                            isRatingEntered = theSongDetails.user_rating.toFloat() != 0.0F
+
                             binding.ratingBar.rating = theSongDetails.user_rating.toFloat()
                             newRating = theSongDetails.user_rating.toFloat()
                             Log.d("New Rating", "Rating when clicked edit button: ${newRating}")
@@ -226,7 +318,17 @@ class ShowMusicActivity:AppCompatActivity() {
 
                         if (theSongDetails.average_rating != null)
                         {
-                            binding.averageRating.text = "Average Rating: " + theSongDetails.average_rating
+                            if (theSongDetails.average_rating.toFloat() == 0.0F)
+                            {
+                                binding.averageRating.text = "Average Rating: No User has entered a rating!"
+                            }
+
+                            else
+                            {
+                                binding.averageRating.text = "Average Rating: " + theSongDetails.average_rating
+                            }
+
+
                         }
 
 
@@ -274,6 +376,8 @@ class ShowMusicActivity:AppCompatActivity() {
 
     private fun editRating (songId : String, newRating : Float)
     {
+
+        Log.d("Show Music Info Details", "songId: ${songId}, newRating: ${newRating}")
         val newSongRating = NewSongRating(songId, newRating.toString())
         val callEditRating = RetrofitClient.apiService.editSongRating(newSongRating)
 
@@ -292,6 +396,31 @@ class ShowMusicActivity:AppCompatActivity() {
 
             override fun onFailure(call: Call<Void>, t: Throwable) {
                 Log.e("Edit Song Response", "Edit Song call not successful")
+            }
+
+        })
+    }
+
+    private fun addSongRating(songId : String, newRating : Float)
+    {
+        val newSongRating = NewSongRating(songId, newRating.toString())
+        val callAddRating = RetrofitClient.apiService.addSongRating(newSongRating)
+
+        callAddRating.enqueue(object : Callback<Void>{
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if (response.isSuccessful)
+                {
+                    Toast.makeText(this@ShowMusicActivity, "Rating Added Successfully!", Toast.LENGTH_SHORT).show()
+                }
+
+                else
+                {
+                    Log.e("Add Song Response", response.code().toString())
+                }
+            }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                Log.e("Add Song Response", "Add Song call not successful")
             }
 
         })

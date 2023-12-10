@@ -16,6 +16,7 @@ class HomePageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        //TokenManager.initialize(this)
 
         var ishomebuttonclicked=true
         var isexplorebuttonclicked=false

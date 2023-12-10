@@ -39,7 +39,7 @@
         android:layout_marginTop="80dp">
 
         <ImageView
-            android:id="@+id/music1photo"
+            android:id="@+id/music1photo1"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="0dp"
@@ -56,7 +56,7 @@
             android:layout_marginTop="10dp">
 
             <TextView
-                android:id="@+id/music1name"
+                android:id="@+id/music1name1"
                 android:layout_width="135.1dp"
                 android:layout_height="16.1dp"
                 android:layout_gravity="center_horizontal|center"
@@ -68,7 +68,7 @@
                 android:textSize="11sp" />
 
             <TextView
-                android:id="@+id/music1artist"
+                android:id="@+id/music1artist1"
                 android:layout_width="109.1dp"
                 android:layout_height="16.1dp"
                 android:layout_gravity="center_horizontal|center"
@@ -104,7 +104,7 @@
                 android:layout_marginTop="10dp">
 
                 <TextView
-                    android:id="@+id/music2name"
+                    android:id="@+id/music1name"
                     android:layout_width="135.1dp"
                     android:layout_height="16.1dp"
                     android:layout_gravity="center_horizontal|center"
@@ -165,17 +165,5 @@
 
 
     </RelativeLayout>
-    <TextView
-        android:id="@+id/newly_added"
-        android:layout_width="109dp"
-        android:layout_height="23.6dp"
-        android:layout_gravity="center_horizontal|center"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="415dp"
-        android:gravity="center"
-        android:text="@string/newly_added_string"
-        android:textColor="@color/home_ek2_color"
-        android:textSize="16dp"
-        android:textStyle="bold" />
 
 </RelativeLayout>
