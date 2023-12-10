@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/image1"
+        android:icon="@drawable/first3x"
+        android:title="Image 1"
+         />
+    <item
+        android:id="@+id/image2"
+        android:title="Image 2"
+        android:icon="@drawable/second3x"/>
+    <item
+        android:id="@+id/image3"
+        android:title="Image 3"
+        android:icon="@drawable/third3x"/>
+    <item
+        android:id="@+id/image4"
+        android:title="Image 4"
+        android:icon="@drawable/fourth3x"/>
+</menu>

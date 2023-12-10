@@ -61,28 +61,15 @@
         app:layout_constraintTop_toBottomOf="@+id/bar" />
 
     <TextView
-        android:id="@+id/resetPasswordText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="Change Password"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.153"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editProfileText" />
-
-    <TextView
         android:id="@+id/friendsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="53dp"
         android:text="Your Friends"
         android:textColor="@color/white"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.127"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resetPasswordText" />
+        app:layout_constraintTop_toBottomOf="@+id/editProfileText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

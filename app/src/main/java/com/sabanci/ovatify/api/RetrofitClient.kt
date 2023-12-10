@@ -11,7 +11,6 @@ object RetrofitClient {
 
     private const val BASE_URL = "https://ovatify-backend-dev.fly.dev/"
     private const val AUTH_TOKEN = "e5e28a48-8080-11ee-b962-0242ac120002"
-
     private val httpClient = OkHttpClient.Builder()
 
     init {

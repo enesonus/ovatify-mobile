@@ -147,7 +147,7 @@ class DashboardFragment:Fragment(R.layout.dashboard_fragment) {
     }
     private fun trackForBar(){
         tracker++
-        if(tracker==3){
+        if(tracker==5){
             prbar.visibility=View.INVISIBLE
             adapter.notifyDataSetChanged()
         }
