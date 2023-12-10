@@ -17,6 +17,10 @@ class ProfileActivity:AppCompatActivity() {
         binding.backButton.setOnClickListener{
             onBackPressed()
         }
+        binding.editProfileText.setOnClickListener {
+            val intent=Intent(this,EditProfileActivity::class.java)
+            startActivity(intent)
+        }
         binding.friendsText.setOnClickListener {
             val intent = Intent(this, FriendFlowActivity::class.java)
             startActivity(intent)

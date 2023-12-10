@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/_bg__mobile_dashboard_ek2_color"
+    >
+
+
+    <RelativeLayout
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="70.25dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp"
+        android:layout_alignParentTop="true"
+        android:clipToOutline="true"
+        android:background="#0D0909"
+        tools:ignore="MissingConstraints"
+        >
+
+        <TextView
+            android:id="@+id/Music_info_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal|center"
+            android:gravity="center"
+            android:text="Your Profile"
+            android:textColor="@color/home_ek2_color"
+            android:textSize="24dp" />
+
+        <RelativeLayout
+            android:id="@+id/group_2049"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="11dp">
+
+
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="20dp"
+                android:layout_height="45dp"
+                android:src="@drawable/icon"></ImageView>
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/Edit_button"
+        android:layout_width="90dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/Edit_text"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="30dp"
+            android:text="Edit"
+            android:textColor="@color/home_ek2_color"
+            android:textSize="20sp"
+            ></TextView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:visibility="invisible"
+        android:id="@+id/music2"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="90dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/userphoto"
+            android:clickable="false"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="0dp"
+            android:contentDescription="unsplash_zcqjx2_z4sm_ek2"
+            android:src="@drawable/unsplash_zcqjx2_z4sm_ek2" />
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="270.1dp"
+            android:layout_height="48.1dp"
+            android:layout_gravity="center_horizontal|center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="220dp"
+            android:text="Sanctuary In Dying Light"
+            android:textColor="@color/home_ek2_color"
+            android:backgroundTint="@android:color/transparent"
+            android:textSize="22sp" />
+
+        <LinearLayout
+            android:id="@+id/music2info"
+            android:layout_width="200dp"
+            android:layout_height="400dp"
+            android:layout_marginTop="270dp"
+            android:layout_marginStart="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="170dp"
+                android:layout_height="30dp"
+                android:text="Friends:"
+                android:textSize="16sp"
+                android:textColor="@color/home_ek2_color"
+                android:id="@+id/friend_count">
+
+            </TextView>
+            <TextView
+                android:layout_width="170dp"
+                android:layout_height="30dp"
+                android:text="Rated Songs:"
+                android:textColor="@color/home_ek2_color"
+                android:textSize="16sp"
+                android:id="@+id/rated_count">
+
+            </TextView>
+            <TextView
+                android:layout_width="170dp"
+                android:layout_height="30dp"
+                android:text="Rating Average:"
+                android:textSize="16sp"
+                android:textColor="@color/home_ek2_color"
+                android:id="@+id/rating_average">
+
+            </TextView>
+
+            <CheckBox
+                android:id="@+id/checkBoxDataSharing"
+                android:layout_width="200dp"
+                android:layout_height="70dp"
+                android:text="Data Sharing"
+                android:textSize="20sp"
+                android:textColor="@color/home_ek2_color"
+                android:clickable="false"
+                android:focusable="false"
+                >
+
+            </CheckBox>
+            <CheckBox
+                android:id="@+id/checkBoxDataProcessing"
+                android:layout_width="200dp"
+                android:layout_height="70dp"
+                android:text="Data Processing"
+                android:textSize="20sp"
+                android:clickable="false"
+                android:focusable="false"
+                android:textColor="@color/home_ek2_color"
+                >
+
+            </CheckBox>
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar4"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="170dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <Button
+        android:id="@+id/cancel_button_new"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/save_cancel_bckgrnd"
+        android:text="Cancel"
+        android:textColor="@color/white"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/save_button_new"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/save_cancel_bckgrnd"
+        android:text="Save"
+        android:textColor="@color/white"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+         />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
