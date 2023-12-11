@@ -10,7 +10,8 @@
         android:id="@+id/homeSong1"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.262"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +72,7 @@
             android:layout_height="36.4dp"
             android:layout_gravity="center_horizontal|center"
             android:gravity="center"
-            android:text="@string/welcome__user_string"
+            android:text="Welcome"
             android:textColor="@color/home_ek2_color"
             android:textSize="24dp"
             android:textStyle="bold" />
@@ -142,43 +143,19 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <RelativeLayout
-        android:id="@+id/line_area_chart"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="5dp"
+        android:textSize="20sp"
+        android:text="No music recommended currently"
+        android:textColor="@color/home_ek2_color"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/homeSong2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeSong2">
-
-        <View
-            android:id="@+id/rectangle_1118"
-            android:layout_width="310dp"
-            android:layout_height="173dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="0dp"
-            android:background="@drawable/rectangle_1118_shape" />
-
-        <ImageView
-            android:id="@+id/chartphoto"
-            android:layout_width="280dp"
-            android:layout_height="130dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="35dp"
-            android:src="@drawable/chart"></ImageView>
-
-        <TextView
-            android:id="@+id/recent_ratings"
-            android:layout_width="119.89dp"
-            android:layout_height="19.58dp"
-            android:layout_marginLeft="27.69dp"
-            android:layout_marginTop="12.28dp"
-            android:text="@string/recent_ratings_string"
-            android:textColor="@color/_bg__bottom_navbar_ek1_color"
-            android:textSize="12sp" />
-
-
-    </RelativeLayout>
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

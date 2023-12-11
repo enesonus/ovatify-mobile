@@ -54,6 +54,11 @@ class LibraryFragment:Fragment(R.layout.music_list) {
             startActivity(intent)
 
         }
+        val exportSongButton = view.findViewById<Button>(R.id.export_song_button)
+        exportSongButton.setOnClickListener {
+            val intent = Intent(requireActivity(), ExportActivity::class.java)
+            startActivity(intent)
+        }
 
         val exportSongButton = view.findViewById<Button>(R.id.export_song_button)
         exportSongButton.setOnClickListener {

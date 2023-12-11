@@ -195,7 +195,6 @@ interface ApiService {
         @Query("genre") artistName : String
     ) : Call<ArrayList<ExportSongDetails>>
 
-
 }
 
 
