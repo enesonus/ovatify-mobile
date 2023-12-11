@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import com.sabanci.ovatify.databinding.ExportFlowBinding
 import com.sabanci.ovatify.fragment.ArtistExportFragment
 import com.sabanci.ovatify.fragment.GenreExportFragment
-
+import com.sabanci.ovatify.databinding.ExportFlowBinding
 class ExportActivity : AppCompatActivity() {
 
     private lateinit var binding: ExportFlowBinding
@@ -47,5 +47,7 @@ class ExportActivity : AppCompatActivity() {
     private fun replaceFragment(fragment: Fragment){
         val fragmentmanager= supportFragmentManager
         fragmentmanager.beginTransaction().replace(R.id.fragmentContainerViewUpload,fragment).commit()
+    }
+
     }
 }
