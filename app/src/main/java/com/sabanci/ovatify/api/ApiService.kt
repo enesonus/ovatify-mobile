@@ -1,6 +1,7 @@
 
 //import com.sabanci.ovatify.data.AllFriendsReturn
 import com.sabanci.ovatify.data.AllFriendsReturn
+import com.sabanci.ovatify.data.ExportSongDetails
 import com.sabanci.ovatify.data.FavoriteSongsReturn
 import com.sabanci.ovatify.data.FriendReturn
 //import com.sabanci.ovatify.data.FriendReturn
@@ -176,6 +177,25 @@ interface ApiService {
     fun getRecommendFriendListen(
         @Query("count") numberOfSongs: Int
     ) : Call<RecommendationReturn>
+
+    @GET("users/get-library-artist-names/")
+    fun getAllArtists() : Call<Map<String, ArrayList<String>>>
+
+    @GET("users/get-library-genre-names/")
+    fun getAllGenres() : Call<Map<String, ArrayList<String>>>
+
+
+    @GET("users/export-by-artist/")
+    fun exportByArtist(
+        @Query("artist") artistName : String
+    ) : Call<ArrayList<ExportSongDetails>>
+
+    @GET("users/export-by-genre/")
+    fun exportByGenre(
+        @Query("genre") artistName : String
+    ) : Call<ArrayList<ExportSongDetails>>
+
+
 }
 
 
