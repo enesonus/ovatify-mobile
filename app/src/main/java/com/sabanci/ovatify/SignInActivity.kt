@@ -1,5 +1,6 @@
 package com.sabanci.ovatify
 
+import TokenManager
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,10 +9,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.sabanci.ovatify.api.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import com.sabanci.ovatify.api.RetrofitClient
+import com.sabanci.ovatify.api.RetrofitClient3
 
 class SignInActivity : AppCompatActivity() {
 
@@ -21,6 +23,7 @@ class SignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.sign_in_page)
+        //TokenManager.initialize(this)
 
 
 
@@ -40,10 +43,34 @@ class SignInActivity : AppCompatActivity() {
 
                         if (it.isSuccessful)
                         {
+
+
                             val user = FirebaseAuth.getInstance().currentUser
+                            Log.d("call details currentUser", user.toString())
                             var userToken = user?.getIdToken(false)?.result?.token
+                            Log.d("call details", userToken.toString())
+
+                            TokenManager.userToken = userToken.toString()
+
+                            //val retrofitCli = RetrofitClient(userToken.toString())
+
                             userToken = "Bearer $userToken"
-                            val call = RetrofitClient.apiService.login(userToken)
+
+
+
+                            Log.d("call details", userToken)
+                            Log.d("Auth Token Before Change", RetrofitClient.AUTH_TOKEN)
+                            //RetrofitClient.AUTH_TOKEN = userToken.toString()
+                            Log.d("call details", RetrofitClient.AUTH_TOKEN)
+
+                            Log.d("Auth Token Before Sleep", RetrofitClient.AUTH_TOKEN)
+                            Thread.sleep(500)
+                            Log.d("Auth Token After Sleep", RetrofitClient.AUTH_TOKEN)
+
+                            //val call = RetrofitClient.apiService.login(userToken)
+
+                            val call = RetrofitClient.apiService.login()
+
 
                             call.enqueue(object : Callback<Response<Void>>{
                                 override fun onResponse(
@@ -53,13 +80,19 @@ class SignInActivity : AppCompatActivity() {
                                     if(response.isSuccessful)
                                     {
                                         Log.d("Login Api Call", "Api Call Successful, Response Code: ${response.code()}")
+                                        //TokenManager.updateUserToken(userToken)
+                                        //RetrofitClient.AUTH_TOKEN = userToken.toString()
+                                        Log.d("Current Token", "Current Token: ${RetrofitClient.AUTH_TOKEN}")
 
-
+                                        val intent = Intent(this@SignInActivity, HomePageActivity::class.java)
+                                        startActivity(intent)
                                     }
 
                                     else
                                     {
                                         Log.e("Login Api Call", "Api Call Failed, Response Code: ${response.code()}")
+                                        //RetrofitClient.AUTH_TOKEN = ""
+                                        Toast.makeText(this@SignInActivity, "Cannot Sign In, Error Code ${response.code()}", Toast.LENGTH_SHORT).show()
                                     }
                                 }
 
@@ -70,8 +103,7 @@ class SignInActivity : AppCompatActivity() {
 
                             })
 
-                            val intent = Intent(this, HomePageActivity::class.java)
-                            startActivity(intent)
+
                         }
 
                         else

@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "513502471410",
-    "project_id": "ovatify-42262",
-    "storage_bucket": "ovatify-42262.appspot.com"
+    "project_number": "498057476584",
+    "project_id": "ovatify",
+    "storage_bucket": "ovatify.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:513502471410:android:c6477e9c88581408885c6b",
+        "mobilesdk_app_id": "1:498057476584:android:7a0b5b0c9ad539bb170c5d",
         "android_client_info": {
           "package_name": "com.sabanci.ovatify"
         }
@@ -15,7 +15,26 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBNiwAid29xFx77mXGdJRMx7gfO4mB_R5Q"
+          "current_key": "AIzaSyC4LU8fnZpI4UMGL-xub7FjNuLYDt5xvGk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:498057476584:android:a3fcb86964703c03170c5d",
+        "android_client_info": {
+          "package_name": "com.sabanciuniv.edu"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4LU8fnZpI4UMGL-xub7FjNuLYDt5xvGk"
         }
       ],
       "services": {

@@ -1,5 +1,6 @@
 package com.sabanci.ovatify
 
+import com.sabanci.ovatify.api.RetrofitClient
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,8 +10,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
-import com.sabanci.ovatify.api.RetrofitClient
-import com.sabanci.ovatify.api.RetrofitClient.apiService
+import com.sabanci.ovatify.api.RetrofitClient3
+//import com.sabanci.ovatify.api.RetrofitClient2
+//import com.sabanci.ovatify.api.RetrofitClient2.apiService
 import com.sabanci.ovatify.data.CreateUserRequest
 import retrofit2.Call
 import retrofit2.Response
@@ -82,18 +84,20 @@ class SignUpActivity : AppCompatActivity() {
                                 if (it.isSuccessful)
                                 {
 
+                                    //Thread.sleep(1000)
+
                                     val user = FirebaseAuth.getInstance().currentUser
                                     val email = user?.email
                                     var userToken = user?.getIdToken(false)?.result?.token
-                                    userToken = "Bearer $userToken"
+                                    //userToken = "Bearer " + userToken
                                     Log.d("The Token", "Firebase Authentication Token: $userToken , The Email: $email")
                                     //val request = CreateUserRequest(userEmail, userToken)
 
 
-                                    val call = apiService.createUser(userToken, email)
+                                    val call = RetrofitClient3(userToken.toString()).apiService.createUser(userToken.toString(), mapOf("email" to email.toString()))
 
-                                    call.enqueue(object : Callback<Response<Void>> {
-                                        override fun onResponse(call: Call<Response<Void>>, response: Response<Response<Void>>) {
+                                    call.enqueue(object : Callback<Void> {
+                                        override fun onResponse(call: Call<Void>, response: Response<Void>) {
 
                                             Log.d("ApiCall", "HTTP Response Code: ${response.code()}")
 
@@ -108,15 +112,21 @@ class SignUpActivity : AppCompatActivity() {
                                                     val responseBody = response.body()
                                                     val headers = response.headers()
                                                     //Toast.makeText(this, "Error creating user!", Toast.LENGTH_SHORT).show()
-                                                    Log.d("Mytag", "response code 201")
+                                                    Toast.makeText(this@SignUpActivity, "Cannot Sign In, Error Code ${response.code()}", Toast.LENGTH_SHORT).show()
                                                 }
 
                                                 else
                                                 {
+
                                                     val errorCode = response.code()
                                                     val errorBody = response.errorBody()?.string()
                                                     Log.d("Mytag", "response code other than 201")
+                                                    //AUTH_TOKEN = userToken
                                                     //Toast.makeText(this, "User created susccesfully!", Toast.LENGTH_SHORT).show()
+
+                                                    Log.d("Mytag", "response code 201")
+                                                    val intent = Intent(this@SignUpActivity, SignInActivity::class.java)
+                                                    startActivity(intent)
                                                 }
 
                                             } else {
@@ -129,14 +139,12 @@ class SignUpActivity : AppCompatActivity() {
                                             }
                                         }
 
-                                        override fun onFailure(call: Call<Response<Void>>, t: Throwable) {
+                                        override fun onFailure(call: Call<Void>, t: Throwable) {
                                             // Handle network failure or other exceptions
                                             Log.e("ApiCall", "API Call Failed", t)
                                             t.printStackTrace()
                                         }
                                     })
-
-
 
                                     /*
                                     if (response.isSuccessful) {
@@ -157,15 +165,11 @@ class SignUpActivity : AppCompatActivity() {
                                     }
                                     */
 
-                                    val intent = Intent(this, SignInActivity::class.java)
-                                    startActivity(intent)
-
-
-
 
                                 }
                                 else
                                 {
+                                    Log.e("Firebase Error", it.exception.toString())
                                     Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
                                 }
                             }

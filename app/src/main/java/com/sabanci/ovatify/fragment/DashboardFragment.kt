@@ -23,6 +23,7 @@ import com.sabanci.ovatify.data.SongCounts
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import com.github.mikephil.charting.charts.BarChart
 
 class DashboardFragment:Fragment(R.layout.dashboard_fragment) {
     private lateinit var adapter: DashboardAdapter
@@ -147,7 +148,7 @@ class DashboardFragment:Fragment(R.layout.dashboard_fragment) {
     }
     private fun trackForBar(){
         tracker++
-        if(tracker==5){
+        if(tracker==3){
             prbar.visibility=View.INVISIBLE
             adapter.notifyDataSetChanged()
         }

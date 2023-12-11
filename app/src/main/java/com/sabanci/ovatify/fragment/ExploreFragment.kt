@@ -18,6 +18,11 @@ import com.sabanci.ovatify.api.RetrofitClient
 import com.sabanci.ovatify.data.FavoriteSongsReturn
 import com.sabanci.ovatify.data.IhomeclickListener
 import com.sabanci.ovatify.data.RecentlyAddedSongsReturn
+import com.sabanci.ovatify.data.RecommendationReturn
+import com.sabanci.ovatify.data.RecommendationReturnYouMightLike
+import com.sabanci.ovatify.data.RecommendationSinceYouLikeReturn
+import com.sabanci.ovatify.data.RecommendationSongYouMightLike
+import com.sabanci.ovatify.data.RecommendedSong
 import com.sabanci.ovatify.data.Songs
 import com.sabanci.ovatify.databinding.MusicListBinding
 import com.sabanci.ovatify.databinding.MusicParentItemBinding
@@ -68,10 +73,16 @@ class ExploreFragment:Fragment(R.layout.explore_music_list_fragment) {
     private lateinit var favoriteSongsList: ArrayList<Songs>
     private lateinit var musicModelListFavorites: ArrayList<MusicModel>
     private lateinit var musicModelListRecents: ArrayList<MusicModel>
+    private lateinit var musicModelFriendRecommend: ArrayList<MusicModel>
+    private lateinit var musicModelSinceYouLike: ArrayList<MusicModel>
+    private lateinit var musicModelFriendMix: ArrayList<MusicModel>
     private lateinit var recentlyAddedSongsList: ArrayList<Songs>
     private lateinit var songCollections: ArrayList<LibraryModel>
     //private lateinit var adapter: LibraryAdapter
     private lateinit var recyclerView: RecyclerView
+    private lateinit var friendsListenSongs: ArrayList<RecommendedSong>
+    private lateinit var youMightLikeList: ArrayList<RecommendationSongYouMightLike>
+    private lateinit var sinceYouLikeList: ArrayList<RecommendationSongYouMightLike>
     private lateinit var datalist:ArrayList<Any> //data is not initialized yet
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -91,6 +102,8 @@ class ExploreFragment:Fragment(R.layout.explore_music_list_fragment) {
         }
 
          */
+
+        /*
 
         val callFavoriteSongsReturn = RetrofitClient.apiService.getFavoriteSongs("5")
 
@@ -211,6 +224,13 @@ class ExploreFragment:Fragment(R.layout.explore_music_list_fragment) {
         Log.d("collections comparison", "SampleData.collections: ${SampleData.collections}")
         Log.d("collections comparison", "songCollections: ${songCollections}")
 
+         */
+
+        getRecommendFriendsListen(5)
+        getRecommendYouMightLike(5)
+        getRecommendFriendMix(5)
+        getRecommendSinceYouLike(5)
+
         recyclerView = view.findViewById(R.id.exploreRecView)
         recyclerView.adapter=LibraryAdapter2(songCollections, object : IhomeclickListener {
             override fun onItemClick(position: Int) {
@@ -219,7 +239,7 @@ class ExploreFragment:Fragment(R.layout.explore_music_list_fragment) {
                 val intent = Intent(requireContext(), VerticalMusicActivity::class.java)
                 intent.putExtra("List Title", songCollections[position].title)
                 startActivity(intent)
-                Toast.makeText(requireContext(), "Clicked on $clickedItem", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(requireContext(), "Clicked on $clickedItem", Toast.LENGTH_SHORT).show()
             }
 
         })
@@ -230,5 +250,268 @@ class ExploreFragment:Fragment(R.layout.explore_music_list_fragment) {
     }
 
 
+
+    private fun getRecommendFriendsListen(numberOfSongs : Int)
+    {
+        val callRecommendFriendListen = RetrofitClient.apiService.getRecommendFriendListen(numberOfSongs)
+
+        callRecommendFriendListen.enqueue(object : Callback<RecommendationReturn>{
+            override fun onResponse(
+                call: Call<RecommendationReturn>,
+                response: Response<RecommendationReturn>
+            ) {
+                //Log.d("Recommend Friend Listen", response.code().toString())
+                if (response.isSuccessful)
+                {
+
+
+                    val recommendFriendListen : RecommendationReturn? = response.body()
+
+
+                    //Log.d("Recommend Friend Listen", recommendFriendListen.toString())
+
+                    friendsListenSongs = arrayListOf()
+                    musicModelFriendRecommend = arrayListOf()
+
+
+                    if (recommendFriendListen != null)
+                    {
+                        friendsListenSongs = recommendFriendListen.tracks_info
+
+                        for (song in friendsListenSongs)
+                        {
+                            if (song.main_artist.size == 0)
+                            {
+                                musicModelFriendRecommend += MusicModel(song.id, song.img_url, song.name, "")
+                            }
+
+                            else
+                            {
+                                Log.d("Strange List Error", song.main_artist.toString())
+                                musicModelFriendRecommend += MusicModel(song.id, song.img_url, song.name, song.main_artist[0])
+                            }
+
+                        }
+                    }
+
+
+                    songCollections += LibraryModel("Your Friends Like", musicModelFriendRecommend)
+                    Log.d("explore song collections", songCollections.toString())
+                    recyclerView.adapter?.notifyDataSetChanged()
+
+
+                }
+
+                else if (response.code() == 404)
+                {
+                    songCollections += LibraryModel("Your Friends Like", ArrayList<MusicModel>())
+                    recyclerView.adapter?.notifyDataSetChanged()
+                }
+            }
+
+            override fun onFailure(call: Call<RecommendationReturn>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
+    private fun getRecommendYouMightLike(numberOfSongs: Int)
+    {
+        val callRecommendYouMight = RetrofitClient.apiService.getRecommendYouMightLike(numberOfSongs)
+
+        callRecommendYouMight.enqueue(object : Callback<RecommendationReturnYouMightLike>{
+            override fun onResponse(
+                call: Call<RecommendationReturnYouMightLike>,
+                response: Response<RecommendationReturnYouMightLike>
+            ) {
+                //Log.d("Recommend Friend Listen", response.code().toString())
+                //Log.d("Recommend Friend Response Code", response.isSuccessful.toString())
+                if (response.isSuccessful)
+                {
+
+
+                    val recommendYouMight : RecommendationReturnYouMightLike? = response.body()
+
+
+                    Log.d("Recommend Friend Listen", recommendYouMight.toString())
+
+                    youMightLikeList = arrayListOf()
+                    musicModelFriendRecommend = arrayListOf()
+
+
+                    if (recommendYouMight != null)
+                    {
+                        youMightLikeList = recommendYouMight.tracks_info
+
+                        for (song in youMightLikeList)
+                        {
+
+                            Log.d("Strange List Error", song.main_artist.toString())
+                            musicModelFriendRecommend += MusicModel(song.id, song.img_url, song.name, song.main_artist)
+
+
+                        }
+                    }
+
+
+                    songCollections += LibraryModel("You Might Like", musicModelFriendRecommend)
+                    Log.d("explore song collections", songCollections.toString())
+                    recyclerView.adapter?.notifyDataSetChanged()
+
+
+                }
+
+                else if (response.code() == 404)
+                {
+                    songCollections += LibraryModel("You Might Like", ArrayList<MusicModel>())
+                    recyclerView.adapter?.notifyDataSetChanged()
+                }
+            }
+
+            override fun onFailure(call: Call<RecommendationReturnYouMightLike>, t: Throwable) {
+                Log.e("ExploreFragment", "Network call failed", t)
+                // Optionally, show a message to the user
+                Toast.makeText(context, "Failed to load data", Toast.LENGTH_LONG).show()
+            }
+
+        })
+    }
+
+    private fun getRecommendSinceYouLike(numberOfSongs: Int)
+    {
+        val callSinceYouLike = RetrofitClient.apiService.getRecommendSinceYouLike(numberOfSongs)
+
+        callSinceYouLike.enqueue(object : Callback<RecommendationSinceYouLikeReturn>{
+            override fun onResponse(
+                call: Call<RecommendationSinceYouLikeReturn>,
+                response: Response<RecommendationSinceYouLikeReturn>
+            ) {
+                //Log.d("Recommend Friend Listen", response.code().toString())
+                //Log.d("Recommend Friend Response Code", response.isSuccessful.toString())
+                if (response.isSuccessful)
+                {
+
+
+                    val recommendSinceYouLike : RecommendationSinceYouLikeReturn? = response.body()
+
+
+                    Log.d("Recommend Friend Listen", recommendSinceYouLike.toString())
+
+                    sinceYouLikeList = arrayListOf()
+                    musicModelSinceYouLike = arrayListOf()
+
+
+                    if (recommendSinceYouLike != null)
+                    {
+
+                        val categorizedSongs: Map<String, ArrayList<RecommendationSongYouMightLike>> = recommendSinceYouLike.tracks_info
+
+                        for ((categoryName, songs) in categorizedSongs)
+                        {
+                            musicModelSinceYouLike = arrayListOf()
+                            sinceYouLikeList = songs
+
+                            for (song in sinceYouLikeList)
+                            {
+                                musicModelSinceYouLike += MusicModel(song.id, song.img_url, song.name, song.main_artist)
+                            }
+
+
+                            songCollections += LibraryModel("Since you like ${categoryName}", musicModelSinceYouLike)
+
+                        }
+
+                        //youMightLikeList = recommendYouMight.tracks_info
+                    }
+
+
+                    //songCollections += LibraryModel("You Might Like", musicModelFriendRecommend)
+                    Log.d("explore song collections", songCollections.toString())
+                    recyclerView.adapter?.notifyDataSetChanged()
+
+
+                }
+
+                /*
+                else if (response.code() == 404)
+                {
+                    songCollections += LibraryModel("You Might Like", ArrayList<MusicModel>())
+                    recyclerView.adapter?.notifyDataSetChanged()
+                }
+
+                 */
+            }
+
+            override fun onFailure(call: Call<RecommendationSinceYouLikeReturn>, t: Throwable) {
+                Log.e("ExploreFragment", "Network call failed", t)
+                // Optionally, show a message to the user
+                Toast.makeText(context, "Failed to load data", Toast.LENGTH_LONG).show()
+            }
+
+        })
+    }
+
+    private fun getRecommendFriendMix(numberOfSongs: Int)
+    {
+        val callRecommendFriendMix = RetrofitClient.apiService.getRecommendFriendMix(numberOfSongs)
+
+        callRecommendFriendMix.enqueue(object : Callback<RecommendationReturnYouMightLike>{
+            override fun onResponse(
+                call: Call<RecommendationReturnYouMightLike>,
+                response: Response<RecommendationReturnYouMightLike>
+            ) {
+                Log.d("Recommend Friend Mix", response.code().toString())
+                Log.d("Recommend Friend Mix Response Code", response.isSuccessful.toString())
+                if (response.isSuccessful)
+                {
+
+
+                    val recommendFriendMix : RecommendationReturnYouMightLike? = response.body()
+
+
+                    Log.d("Recommend Friend Mix", recommendFriendMix.toString())
+
+                    youMightLikeList = arrayListOf()
+                    musicModelFriendRecommend = arrayListOf()
+
+
+                    if (recommendFriendMix != null)
+                    {
+                        youMightLikeList = recommendFriendMix.tracks_info
+
+                        for (song in youMightLikeList)
+                        {
+
+                            Log.d("Strange List Error", song.main_artist.toString())
+                            musicModelFriendRecommend += MusicModel(song.id, song.img_url, song.name, song.main_artist)
+
+
+                        }
+                    }
+
+
+                    songCollections += LibraryModel("Friend Mix", musicModelFriendRecommend)
+                    Log.d("explore song collections", songCollections.toString())
+                    recyclerView.adapter?.notifyDataSetChanged()
+
+
+                }
+
+                else if (response.code() == 404)
+                {
+                    songCollections += LibraryModel("Friend Mix", ArrayList<MusicModel>())
+                    recyclerView.adapter?.notifyDataSetChanged()
+                }
+            }
+
+            override fun onFailure(call: Call<RecommendationReturnYouMightLike>, t: Throwable) {
+                Log.e("ExploreFragment", "Network call failed", t)
+                // Optionally, show a message to the user
+                Toast.makeText(context, "Failed to load data", Toast.LENGTH_LONG).show()
+            }
+
+        })
+    }
 
 }
