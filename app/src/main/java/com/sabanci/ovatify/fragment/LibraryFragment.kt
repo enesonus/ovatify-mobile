@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.sabanci.ovatify.ExportActivity
 import com.sabanci.ovatify.R
 import com.sabanci.ovatify.ShowMusicActivity
 import com.sabanci.ovatify.UploadActivity
@@ -52,6 +53,11 @@ class LibraryFragment:Fragment(R.layout.music_list) {
             val intent = Intent(requireActivity(), UploadActivity::class.java)
             startActivity(intent)
 
+        }
+        val exportSongButton = view.findViewById<Button>(R.id.export_song_button)
+        exportSongButton.setOnClickListener {
+            val intent = Intent(requireActivity(), ExportActivity::class.java)
+            startActivity(intent)
         }
 
         getFavoriteSongs("5")

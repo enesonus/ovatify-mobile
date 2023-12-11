@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_brown">
+
+    <RelativeLayout
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="70.25dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="#0D0909"
+        android:clipToOutline="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/Friends"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal|center"
+            android:gravity="center"
+            android:text="Export Song"
+            android:textColor="@color/home_ek2_color"
+            android:textSize="24dp" />
+
+        <RelativeLayout
+            android:id="@+id/group_2049"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="11dp">
+
+
+            <ImageView
+                android:id="@+id/back_button"
+                android:layout_width="20dp"
+                android:layout_height="45dp"
+                android:src="@drawable/icon"></ImageView>
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="356dp"
+        android:layout_height="590dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bar">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragmentContainerViewUpload"
+            android:name="com.sabanci.ovatify.fragment.ArtistExportFragment"
+            android:layout_width="356dp"
+            android:layout_height="550dp"
+            android:layout_marginTop="40dp">
+
+        </androidx.fragment.app.FragmentContainerView>
+
+        <RelativeLayout
+            android:id="@+id/artist_button"
+            android:layout_width="178dp"
+            android:layout_height="40dp"
+            android:background="@drawable/upload_open">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal|center"
+                android:gravity="center"
+                android:text="Artist"
+                android:textColor="@color/home_ek2_color"
+                android:textSize="18dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/genre_button"
+            android:layout_width="178dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="178dp"
+            android:background="@drawable/upload_closed"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal|center"
+                android:gravity="center"
+                android:text="Genre"
+                android:textColor="@color/home_ek2_color"
+                android:textSize="18dp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

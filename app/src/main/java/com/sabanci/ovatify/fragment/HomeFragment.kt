@@ -282,51 +282,61 @@ class HomeFragment: Fragment(R.layout.home_fragment2) {
                     val music2name=view?.findViewById<TextView>(R.id.homeMusicName2)
                     val music2artist=view?.findViewById<TextView>(R.id.homeMusicArtist2)
 
-                    val chartphoto=view?.findViewById<ImageView>(R.id.chartphoto)
+                    if(musicModelFriendRecommend.size==2) {
 
-                    Log.d("Music1 photo", music1photo.toString())
 
-                    if (music1photo != null) {
-                        music1photo.load(musicModelFriendRecommend[0].imageUrl)
-                        Log.d("Music1 photo", "Photo changed")
-                    }
+                        Log.d("Music1 photo", music1photo.toString())
 
-                    if (music1name != null) {
-                        music1name.text = musicModelFriendRecommend[0].songName
-                    }
+                        if (music1photo != null) {
+                            music1photo.load(musicModelFriendRecommend[0].imageUrl)
+                            Log.d("Music1 photo", "Photo changed")
+                        }
 
-                    if (music1artist != null) {
-                        music1artist.text = musicModelFriendRecommend[0].artistName
-                    }
+                        if (music1name != null) {
+                            music1name.text = musicModelFriendRecommend[0].songName
+                        }
 
-                    if (music2photo != null) {
-                        music2photo.load(musicModelFriendRecommend[1].imageUrl)
-                    }
+                        if (music1artist != null) {
+                            music1artist.text = musicModelFriendRecommend[0].artistName
+                        }
 
-                    if (music2name != null) {
-                        music2name.text = musicModelFriendRecommend[1].songName
-                    }
+                        if (music2photo != null) {
+                            music2photo.load(musicModelFriendRecommend[1].imageUrl)
+                        }
 
-                    if (music2artist != null) {
-                        music2artist.text = musicModelFriendRecommend[1].artistName
-                    }
+                        if (music2name != null) {
+                            music2name.text = musicModelFriendRecommend[1].songName
+                        }
 
-                    val song1 = view?.findViewById<ConstraintLayout>(R.id.homeSong1)
-                    if (song1 != null) {
-                        song1.setOnClickListener{
-                            val intent = Intent(requireContext(), ShowMusicActivity::class.java)
-                            intent.putExtra("song", musicModelFriendRecommend[0].id)
-                            startActivity(intent)
+                        if (music2artist != null) {
+                            music2artist.text = musicModelFriendRecommend[1].artistName
+                        }
+
+                        val song1 = view?.findViewById<ConstraintLayout>(R.id.homeSong1)
+                        if (song1 != null) {
+                            song1.setOnClickListener {
+                                val intent = Intent(requireContext(), ShowMusicActivity::class.java)
+                                intent.putExtra("song", musicModelFriendRecommend[0].id)
+                                startActivity(intent)
+                            }
+                        }
+
+                        val song2 = view?.findViewById<ConstraintLayout>(R.id.homeSong2)
+                        if (song2 != null) {
+                            song2.setOnClickListener {
+                                val intent = Intent(requireContext(), ShowMusicActivity::class.java)
+                                intent.putExtra("song", musicModelFriendRecommend[1].id)
+                                startActivity(intent)
+                            }
                         }
                     }
-
-                    val song2 = view?.findViewById<ConstraintLayout>(R.id.homeSong2)
-                    if (song2 != null) {
-                        song2.setOnClickListener{
-                            val intent = Intent(requireContext(), ShowMusicActivity::class.java)
-                            intent.putExtra("song", musicModelFriendRecommend[1].id)
-                            startActivity(intent)
-                        }
+                    else{
+                        val song1 = view?.findViewById<ConstraintLayout>(R.id.homeSong1)
+                        val song2 = view?.findViewById<ConstraintLayout>(R.id.homeSong2)
+                        song1?.visibility=View.INVISIBLE
+                        song2?.visibility=View.INVISIBLE
+                        val text=view?.findViewById<TextView>(R.id.textView14)
+                        text?.visibility=View.VISIBLE
                     }
 
 

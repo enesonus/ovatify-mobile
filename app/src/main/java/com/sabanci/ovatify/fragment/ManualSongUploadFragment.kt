@@ -104,6 +104,7 @@ class ManualSongUploadFragment: Fragment() {
                         if(response.isSuccessful) {
                             Log.e("response", "done")
                             Toast.makeText(requireContext(), "Song Uploaded Successfully!", Toast.LENGTH_SHORT).show()
+                            binding.ratingBar.rating= 0.0F
                         }
                         else {
                             Log.e("response",response.code().toString())

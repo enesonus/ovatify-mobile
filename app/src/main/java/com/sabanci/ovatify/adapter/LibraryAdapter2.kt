@@ -26,6 +26,10 @@ class LibraryAdapter2 (private val collection: List<LibraryModel>, private val l
         holder.binding.apply {
             val collectionPosition = collection[position]
             favoriteSongs.text =collectionPosition.title
+            if(collection[position].musicModels.size==0){
+                noItemTextView.text="Currently Empty. Because No song is added. Please Add song to your Library"
+                noItemTextView.visibility=View.VISIBLE
+            }
             val songAdapter = SongAdapter(collectionPosition.musicModels, object :
                 IhomeclickListener {
                 override fun onItemClick(position: Int) {

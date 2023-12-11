@@ -1,5 +1,6 @@
 package com.sabanci.ovatify
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -37,12 +38,11 @@ class UploadActivity:AppCompatActivity() {
             }
         }
         binding.backButton.setOnClickListener{
-            onBackPressed()
+            var newIntent = Intent(this, HomePageActivity::class.java)
+            startActivity(newIntent)
         }
     }
-    override fun onBackPressed(){
-        super.onBackPressed()
-    }
+
     private fun replaceFragment(fragment: Fragment){
         val fragmentmanager= supportFragmentManager
         fragmentmanager.beginTransaction().replace(R.id.fragmentContainerViewUpload,fragment).commit()

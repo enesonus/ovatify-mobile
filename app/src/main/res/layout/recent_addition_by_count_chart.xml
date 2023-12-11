@@ -17,6 +17,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="50dp"
         android:textSize="25dp"
+        android:textColor="@color/home_ek2_color"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
