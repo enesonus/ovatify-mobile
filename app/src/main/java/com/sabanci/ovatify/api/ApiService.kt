@@ -1,6 +1,8 @@
 
 //import com.sabanci.ovatify.data.AllFriendsReturn
 import com.sabanci.ovatify.data.AllFriendsReturn
+import com.sabanci.ovatify.data.AllPlaylistsReturn
+import com.sabanci.ovatify.data.DatabaseSearchReturn
 import com.sabanci.ovatify.data.ExportSongDetails
 import com.sabanci.ovatify.data.FavoriteSongsReturn
 import com.sabanci.ovatify.data.FriendReturn
@@ -8,6 +10,7 @@ import com.sabanci.ovatify.data.FriendReturn
 //import com.sabanci.ovatify.data.Friends
 import com.sabanci.ovatify.data.IdAndRate
 import com.sabanci.ovatify.data.NewSongRating
+import com.sabanci.ovatify.data.PlaylistByIdReturn
 import com.sabanci.ovatify.data.RResponse
 import com.sabanci.ovatify.data.RecentlyAddedSongsReturn
 import com.sabanci.ovatify.data.RecommendationReturn
@@ -195,6 +198,29 @@ interface ApiService {
         @Query("genre") artistName : String
     ) : Call<ArrayList<ExportSongDetails>>
 
+    @GET ("users/get-playlists/")
+    fun getPlaylists(@Query("number_of_playlists") numberOfPlaylists: Int
+    ): Call<AllPlaylistsReturn>
+    @POST ("users/create-empty-playlist/")
+    fun createEmptyPlaylist(@Body requestBody: Map<String,String>
+    ): Call<RResponse>
+    @GET ("users/get-playlist-by-id/")
+    fun getPlaylistById(@Query("playlist_id") playlistId: String
+    ):Call<PlaylistByIdReturn>
+    @PUT ("users/edit-playlist/")
+    fun editPlaylist(@Body requestBody: Map<String, String>):
+    Call<RResponse>
+
+    @GET ("songs/search-db")
+    fun searchDatabase(@Query("search_string") searchString: String
+    ):Call<DatabaseSearchReturn>
+    @DELETE ("users/remove-song-from-playlist/")
+    fun removeSongFromPlaylist(
+        @Query("playlist_id") playlistId:String,
+        @Query("song_id") songId:String)
+    : Call<RResponse>
+    @POST ("users/add-song-to-playlist/")
+    fun addSongToPlaylist(@Body requestBody: Map<String, String>):Call<RResponse>
 }
 
 

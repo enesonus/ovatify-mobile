@@ -44,6 +44,9 @@
         <activity android:name=".FriendFlowActivity"></activity>
         <activity android:name=".EditProfileActivity"></activity>
         <activity android:name=".ExportActivity"></activity>
+        <activity android:name=".SeePlaylistActivity"></activity>
+        <activity android:name=".ShowPlaylistActivity"></activity>
+        <activity android:name=".AddSongToPlaylistActivity"></activity>
     </application>
 
 </manifest>

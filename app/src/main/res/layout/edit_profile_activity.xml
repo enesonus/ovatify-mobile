@@ -96,6 +96,7 @@
         <EditText
             android:id="@+id/username"
             android:layout_width="270.1dp"
+            android:enabled="false"
             android:layout_height="48.1dp"
             android:layout_gravity="center_horizontal|center"
             android:layout_marginLeft="20dp"
