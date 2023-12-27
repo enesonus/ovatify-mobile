@@ -13,14 +13,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sabanci.ovatify.ExportActivity
 import com.sabanci.ovatify.R
+import com.sabanci.ovatify.SeePlaylistActivity
 import com.sabanci.ovatify.ShowMusicActivity
 import com.sabanci.ovatify.UploadActivity
 import com.sabanci.ovatify.VerticalMusicActivity
 //import com.sabanci.ovatify.adapter.LibraryAdapter
 import com.sabanci.ovatify.adapter.LibraryAdapter2
 import com.sabanci.ovatify.api.RetrofitClient
+import com.sabanci.ovatify.data.AllPlaylistsReturn
 import com.sabanci.ovatify.data.FavoriteSongsReturn
 import com.sabanci.ovatify.data.IhomeclickListener
+import com.sabanci.ovatify.data.Playlistitem
 import com.sabanci.ovatify.data.RecentlyAddedSongsReturn
 import com.sabanci.ovatify.data.Songs
 import com.sabanci.ovatify.model.LibraryModel
@@ -59,10 +62,9 @@ class LibraryFragment:Fragment(R.layout.music_list) {
             val intent = Intent(requireActivity(), ExportActivity::class.java)
             startActivity(intent)
         }
-
-        val exportSongButton = view.findViewById<Button>(R.id.export_song_button)
-        exportSongButton.setOnClickListener {
-            val intent = Intent(requireActivity(), ExportActivity::class.java)
+        val playlistButton=view.findViewById<Button>(R.id.playlist_button)
+        playlistButton.setOnClickListener {
+            val intent = Intent(requireActivity(),SeePlaylistActivity::class.java)
             startActivity(intent)
         }
 
@@ -179,11 +181,8 @@ class LibraryFragment:Fragment(R.layout.music_list) {
             override fun onFailure(call: Call<RecentlyAddedSongsReturn>, t: Throwable) {
                 TODO("Not yet implemented")
             }
-        }
+        })
 
-
-
-        )
 
 
 
