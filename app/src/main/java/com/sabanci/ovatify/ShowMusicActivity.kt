@@ -26,6 +26,7 @@ class ShowMusicActivity:AppCompatActivity() {
 
     lateinit var binding:NewShowMusicBinding
     var ratingBeforeChange:Int=0
+    lateinit var receivedObject:String
 
     var newRating : Float = 0.0F
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +41,7 @@ class ShowMusicActivity:AppCompatActivity() {
 
         if (intent.hasExtra("song")) {
             // Retrieve the serializable object using the key
-            val receivedObject = intent.getStringExtra("song") as String
+            receivedObject = intent.getStringExtra("song") as String
             getMusicInfo(receivedObject)
 
         }
@@ -75,6 +76,11 @@ class ShowMusicActivity:AppCompatActivity() {
                 onBackPressed()
             }
 
+        }
+        binding.suggestButton.setOnClickListener {
+            val intent=Intent(this,SuggestActivity::class.java)
+            intent.putExtra("id",receivedObject)
+            startActivity(intent)
         }
         binding.EditButton.setOnClickListener {
             binding.EditButton.visibility=View.INVISIBLE

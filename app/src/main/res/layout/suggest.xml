@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/_bg__mobile_dashboard_ek2_shape">
+
+
+    <RelativeLayout
+        android:id="@+id/bar"
+        tools:ignore="MissingConstraints"
+        android:layout_width="match_parent"
+        android:layout_height="70.25dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="#0D0909"
+        android:clipToOutline="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/Music_info_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal|center"
+            android:gravity="center"
+            android:text="Suggest a Song"
+            android:textColor="@color/home_ek2_color"
+            android:textSize="24dp" />
+
+        <RelativeLayout
+            android:id="@+id/group_2049"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="11dp">
+
+
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="20dp"
+                android:layout_height="45dp"
+                android:src="@drawable/icon"></ImageView>
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="356dp"
+        android:layout_height="590dp"
+        android:layout_marginTop="80.25dp"
+        android:background="@drawable/_bg__search_ek1_shape"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Choose a Friend"
+            android:textColor="@color/home_ek2_color"
+            android:textSize="18dp"
+            android:gravity="center"
+            ></TextView>
+
+        <RelativeLayout
+            android:id="@+id/suggest_button"
+            android:layout_width="220dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/upload_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/suggestRecView">
+
+            <TextView
+                android:id="@+id/suggest_text"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginStart="1dp"
+                android:layout_gravity="center_horizontal|center"
+                android:gravity="center"
+                android:text="Suggest!"
+                android:textColor="@color/home_ek2_color"
+                android:textSize="16dp"
+                android:visibility="visible" />
+        </RelativeLayout>
+
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+
+            android:id="@+id/suggestRecView"
+            android:layout_width="351dp"
+            android:layout_height="490dp"
+            android:visibility="invisible"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/spotify_list_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="160dp"
+            android:layout_marginEnd="160dp"
+            android:layout_marginBottom="250dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
