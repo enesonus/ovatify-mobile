@@ -71,11 +71,12 @@ class LibraryFragment:Fragment(R.layout.music_list) {
         val exportSongButton = view.findViewById<Button>(R.id.export_song_button)
         exportSongButton.setOnClickListener {
             val intent = Intent(requireActivity(), ExportActivity::class.java)
-            val playlistButton = view.findViewById<Button>(R.id.playlist_button)
-            playlistButton.setOnClickListener {
-                val intent = Intent(requireActivity(), SeePlaylistActivity::class.java)
-                startActivity(intent)
-            }
+            startActivity(intent)
+        }
+        val playlistButton = view.findViewById<Button>(R.id.playlist_button)
+        playlistButton.setOnClickListener {
+            val intent = Intent(requireActivity(), SeePlaylistActivity::class.java)
+            startActivity(intent)
         }
 
             getFavoriteSongs("5")

@@ -49,6 +49,8 @@
         <activity android:name=".SeePlaylistActivity"></activity>
         <activity android:name=".ShowPlaylistActivity"></activity>
         <activity android:name=".AddSongToPlaylistActivity"></activity>
+        <activity android:name=".SuggestActivity"></activity>
+        <activity android:name=".NotificationActivity"></activity>
     </application>
 
 </manifest>

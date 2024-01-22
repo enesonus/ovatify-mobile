@@ -25,6 +25,10 @@ class ProfileActivity:AppCompatActivity() {
             val intent = Intent(this, FriendFlowActivity::class.java)
             startActivity(intent)
         }
+        binding.notificationText.setOnClickListener {
+            val intent=Intent(this,NotificationActivity::class.java )
+            startActivity(intent)
+        }
 
 
     }

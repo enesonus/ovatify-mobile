@@ -6,6 +6,7 @@ import com.sabanci.ovatify.data.DatabaseSearchReturn
 import com.sabanci.ovatify.data.ExportSongDetails
 import com.sabanci.ovatify.data.FavoriteSongsReturn
 import com.sabanci.ovatify.data.FriendReturn
+import com.sabanci.ovatify.data.GetSuggestionsReturn
 //import com.sabanci.ovatify.data.FriendReturn
 //import com.sabanci.ovatify.data.Friends
 import com.sabanci.ovatify.data.IdAndRate
@@ -222,6 +223,12 @@ interface ApiService {
     : Call<RResponse>
     @POST ("users/add-song-to-playlist/")
     fun addSongToPlaylist(@Body requestBody: Map<String, String>):Call<RResponse>
+
+    @POST ("users/suggest-song/")
+    fun suggestSong(@Body requestBody: Map<String, String>):Call<RResponse>
+
+    @GET ("users/get-suggestions/")
+    fun getSuggestions():Call<GetSuggestionsReturn>
 }
 
 
